@@ -16,39 +16,30 @@ function App(props) {
   const [cartProductCount, setCartProductCount] = useState(0);
 
   const fetchUserDetails = useCallback(async () => {
-    const authToken = localStorage.getItem("authToken");
-  
-    if (!authToken) {
-      console.error("No auth token found");
-      return;
-    }
-  
     try {
+      const authToken = localStorage.getItem("authToken");
       const dataResponse = await fetch(SummaryApi.current_user.url, {
         method: SummaryApi.current_user.method,
         credentials: "include",
-        headers: {
-          'Content-Type': 'application/json',
-          "Authorization": `Bearer ${authToken}` // Corrected syntax
+        headers:{
+          'Content-Type':'application/json',
+          "Authorization": Bearer ${authToken}
         }
       });
-  
+
       if (!dataResponse.ok) {
         throw new Error("Failed to fetch user details");
       }
-  
+
       const dataApi = await dataResponse.json();
       if (dataApi.success) {
         dispatch(setUserDetails(dataApi.data));
-        toast.success("User details fetched successfully");
-      } else {
-        toast.error(dataApi.message || "Failed to fetch user details");
+        toast.success(dataApi.success)
       }
     } catch (error) {
       console.error("Failed to fetch user details. Please try again later.");
     }
   }, [dispatch]);
-  
 
   const fetchUserAddToCart = async () => {
     try {
@@ -57,12 +48,11 @@ function App(props) {
         credentials: "include",
       });
 
-      if (!dataResponse.ok) {
-        throw new Error("Failed to fetch cart details");
-      }
-
       const dataApi = await dataResponse.json();
       console.log("data in cart", dataApi);
+      // if (dataApi.success) {
+      //   dispatch(setUserDetails(dataApi.data));
+      // }
 
       setCartProductCount(dataApi.data.count);
     } catch (error) {
@@ -78,8 +68,8 @@ function App(props) {
   return (
     <>
       <ToastContainer 
-        position="top-center"
-      />
+      position="top-center"
+      /> {/* Ensure ToastContainer is at the top level */}
       <Context.Provider
         value={{ fetchUserDetails, cartProductCount, fetchUserAddToCart }}
       >
