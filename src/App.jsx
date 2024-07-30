@@ -11,21 +11,25 @@ import { useDispatch } from "react-redux";
 import { setUserDetails } from "./store/userSlice";
 import CartApi from "./common/cart";
 
-function App() {
+function App(props) {
   const dispatch = useDispatch();
   const [cartProductCount, setCartProductCount] = useState(0);
 
   const fetchUserDetails = useCallback(async () => {
-    try {
-      const authToken = localStorage.getItem("authToken");
-      if (!authToken) return; // No token means no need to fetch user details
+    const authToken = localStorage.getItem("authToken");
 
+    if (!authToken) {
+      console.error("No auth token found");
+      return;
+    }
+
+    try {
       const dataResponse = await fetch(SummaryApi.current_user.url, {
         method: SummaryApi.current_user.method,
         credentials: "include",
         headers: {
           'Content-Type': 'application/json',
-          "Authorization": `Bearer ${authToken}`
+          "Authorization": `Bearer ${authToken}` // Corrected syntax
         }
       });
 
@@ -37,6 +41,8 @@ function App() {
       if (dataApi.success) {
         dispatch(setUserDetails(dataApi.data));
         toast.success("User details fetched successfully");
+      } else {
+        toast.error(dataApi.message || "Failed to fetch user details");
       }
     } catch (error) {
       console.error("Failed to fetch user details. Please try again later.");
@@ -50,8 +56,13 @@ function App() {
         credentials: "include",
       });
 
+      if (!dataResponse.ok) {
+        throw new Error("Failed to fetch cart details");
+      }
+
       const dataApi = await dataResponse.json();
       console.log("data in cart", dataApi);
+
       setCartProductCount(dataApi.data.count);
     } catch (error) {
       console.error("Failed to fetch cart details. Please try again later.");
@@ -65,7 +76,9 @@ function App() {
 
   return (
     <>
-      <ToastContainer position="top-center" />
+      <ToastContainer 
+        position="top-center"
+      />
       <Context.Provider
         value={{ fetchUserDetails, cartProductCount, fetchUserAddToCart }}
       >
