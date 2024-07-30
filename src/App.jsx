@@ -17,12 +17,12 @@ function App(props) {
 
   const fetchUserDetails = useCallback(async () => {
     const authToken = localStorage.getItem("authToken");
-
+  
     if (!authToken) {
       console.error("No auth token found");
       return;
     }
-
+  
     try {
       const dataResponse = await fetch(SummaryApi.current_user.url, {
         method: SummaryApi.current_user.method,
@@ -32,11 +32,11 @@ function App(props) {
           "Authorization": `Bearer ${authToken}` // Corrected syntax
         }
       });
-
+  
       if (!dataResponse.ok) {
         throw new Error("Failed to fetch user details");
       }
-
+  
       const dataApi = await dataResponse.json();
       if (dataApi.success) {
         dispatch(setUserDetails(dataApi.data));
@@ -48,6 +48,7 @@ function App(props) {
       console.error("Failed to fetch user details. Please try again later.");
     }
   }, [dispatch]);
+  
 
   const fetchUserAddToCart = async () => {
     try {
