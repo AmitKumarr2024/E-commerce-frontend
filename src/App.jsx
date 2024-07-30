@@ -17,13 +17,13 @@ function App(props) {
 
   const fetchUserDetails = useCallback(async () => {
     try {
-      const authToken = localStorage.getItem("authToken");
+      const authToken = localStorage.getItem("token");
       const dataResponse = await fetch(SummaryApi.current_user.url, {
         method: SummaryApi.current_user.method,
         credentials: "include",
         headers:{
           'Content-Type':'application/json',
-          "Authorization": Bearer ${authToken}
+          "Authorization": `Bearer ${authToken}`
         }
       });
 

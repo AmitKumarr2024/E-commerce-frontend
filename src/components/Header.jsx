@@ -21,6 +21,10 @@ function Header() {
   const searchQuery = urlSearch.get("q") || "";
   const [search, setSearch] = useState(searchQuery);
 
+
+  console.log("userdetails",user);
+
+
   useEffect(() => {
     setSearch(searchQuery);
   }, [searchQuery]);
@@ -45,7 +49,7 @@ function Header() {
       const data = await fetchData.json();
       if (data.success) {
         toast.success(data.message);
-        localStorage.removeItem("authToken");
+        localStorage.removeItem("token");
         dispatch(setUserDetails(null));
         navigate("/");
       } else {
