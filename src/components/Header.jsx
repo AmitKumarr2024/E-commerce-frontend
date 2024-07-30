@@ -21,7 +21,6 @@ function Header() {
   const searchQuery = urlSearch.get("q") || "";
   const [search, setSearch] = useState(searchQuery);
 
-  
   useEffect(() => {
     setSearch(searchQuery);
   }, [searchQuery]);
@@ -46,7 +45,6 @@ function Header() {
       const data = await fetchData.json();
       if (data.success) {
         toast.success(data.message);
-        // Clear token from localStorage
         localStorage.removeItem("authToken");
         dispatch(setUserDetails(null));
         navigate("/");
@@ -57,15 +55,7 @@ function Header() {
       toast.error("Failed to logout, please try again.");
     }
   };
-  
-  
 
-  
-  
-  
-  
-  
-  
   const handleSearch = (e) => {
     const { value } = e.target;
     setSearch(value);
