@@ -11,18 +11,20 @@ import { useDispatch } from "react-redux";
 import { setUserDetails } from "./store/userSlice";
 import CartApi from "./common/cart";
 
-function App(props) {
+function App() {
   const dispatch = useDispatch();
   const [cartProductCount, setCartProductCount] = useState(0);
 
   const fetchUserDetails = useCallback(async () => {
     try {
       const authToken = localStorage.getItem("authToken");
+      if (!authToken) return; // No token means no need to fetch user details
+
       const dataResponse = await fetch(SummaryApi.current_user.url, {
         method: SummaryApi.current_user.method,
         credentials: "include",
-        headers:{
-          'Content-Type':'application/json',
+        headers: {
+          'Content-Type': 'application/json',
           "Authorization": `Bearer ${authToken}`
         }
       });
@@ -34,7 +36,7 @@ function App(props) {
       const dataApi = await dataResponse.json();
       if (dataApi.success) {
         dispatch(setUserDetails(dataApi.data));
-        toast.success(dataApi.success)
+        toast.success("User details fetched successfully");
       }
     } catch (error) {
       console.error("Failed to fetch user details. Please try again later.");
@@ -50,10 +52,6 @@ function App(props) {
 
       const dataApi = await dataResponse.json();
       console.log("data in cart", dataApi);
-      // if (dataApi.success) {
-      //   dispatch(setUserDetails(dataApi.data));
-      // }
-
       setCartProductCount(dataApi.data.count);
     } catch (error) {
       console.error("Failed to fetch cart details. Please try again later.");
@@ -67,9 +65,7 @@ function App(props) {
 
   return (
     <>
-      <ToastContainer 
-      position="top-center"
-      /> {/* Ensure ToastContainer is at the top level */}
+      <ToastContainer position="top-center" />
       <Context.Provider
         value={{ fetchUserDetails, cartProductCount, fetchUserAddToCart }}
       >
