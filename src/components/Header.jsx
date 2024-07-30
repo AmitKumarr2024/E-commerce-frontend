@@ -52,9 +52,11 @@ function Header() {
         // Remove token from localStorage
         localStorage.removeItem("token");
   
-        // Remove token from cookies (if any)
+        // Remove token from cookies
         document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=" + window.location.hostname;
-        document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=.yourdomain.com"; // if set with subdomain
+        
+        // Optionally, clear cookies with different path and domain if needed
+        document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=yourdomain.com";
         document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;";
   
         navigate("/");
@@ -66,6 +68,7 @@ function Header() {
       toast.error("Failed to logout, please try again.");
     }
   };
+  
   
   
   
