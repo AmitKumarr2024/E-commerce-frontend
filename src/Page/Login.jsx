@@ -25,7 +25,7 @@ function Login({props}) {
     });
   };
 
-  console.log("data", datas);
+  
   const navigate = useNavigate();
   const { fetchUserDetails,fetchUserAddToCart } = useContext(Context);
 

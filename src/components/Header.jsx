@@ -25,50 +25,48 @@ function Header() {
   useEffect(() => {
     setSearch(searchQuery);
   }, [searchQuery]);
-  
+
+
   const handleLogout = async (e) => {
-    e.preventDefault();
-    try {
-      const fetchData = await fetch(SummaryApi.logout.url, {
-        method: SummaryApi.logout.method,
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
-  
-      if (!fetchData.ok) {
-        const errorData = await fetchData.json();
-        toast.error(errorData.message || "Logout request failed");
-        return;
-      }
-  
-      const data = await fetchData.json();
-      if (data.success) {
-        toast.success(data.message);
-        dispatch(setUserDetails(null));
-  
-        // Remove token from localStorage
-        localStorage.removeItem("token");
-  
-        // Remove token from cookies
-        document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=" + window.location.hostname;
-        
-        // Optionally, clear cookies with different path and domain if needed
-        document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=yourdomain.com";
-        document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;";
-  
-        navigate("/");
-      } else {
-        toast.error(data.message || "Logout failed");
-        dispatch(setUserDetails(null));
-      }
-    } catch (error) {
-      toast.error("Failed to logout, please try again.");
+  e.preventDefault();
+  try {
+    const fetchData = await fetch(SummaryApi.logout.url, {
+      method: SummaryApi.logout.method,
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!fetchData.ok) {
+      const errorData = await fetchData.json();
+      toast.error(errorData.message || "Logout request failed");
+      return;
     }
-  };
-  
+
+    const data = await fetchData.json();
+    if (data.success) {
+      toast.success(data.message);
+      dispatch(setUserDetails(null));
+
+      // Remove token from localStorage
+      localStorage.removeItem("token");
+
+      // Remove token from cookies (if any)
+      document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=" + window.location.hostname + "; SameSite=None; Secure";
+      document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=yourdomain.com; SameSite=None; Secure";
+      document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; SameSite=None; Secure";
+
+      navigate("/");
+    } else {
+      toast.error(data.message || "Logout failed");
+      dispatch(setUserDetails(null));
+    }
+  } catch (error) {
+    toast.error("Failed to logout, please try again.");
+  }
+};
+
   
   
   
