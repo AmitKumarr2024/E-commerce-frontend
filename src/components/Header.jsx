@@ -52,11 +52,9 @@ function Header() {
         // Remove token from localStorage
         localStorage.removeItem("token");
   
-        // Remove token from cookies
+        // Remove token from cookies (if any)
         document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=" + window.location.hostname;
-        
-        // Optionally, clear cookies with different path and domain if needed
-        document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=yourdomain.com";
+        document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=.yourdomain.com"; // if set with subdomain
         document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;";
   
         navigate("/");
