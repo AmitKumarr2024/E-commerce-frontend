@@ -5,6 +5,7 @@ import { FaPlus } from "react-icons/fa6";
 import { FaMinus } from "react-icons/fa6";
 import { MdDelete } from "react-icons/md";
 import { toast } from "react-toastify";
+import PaymentOrderApi from "../common/order";
 
 import displayINRCurrency from "../helper/displayCurrency";
 
@@ -127,9 +128,24 @@ function Cart(props) {
   };
   // payment
 
-  const handlePayment = () => {
+  const handlePayment = async () => {
     try {
-      alert("payment done congratulation");
+      const response = await fetch(PaymentOrderApi.payment.url, {
+        method: PaymentOrderApi.payment.method,
+        credentials: "true",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      const dataResponse = await response.json();
+
+      if(dataResponse.success){
+
+        toast.success("payment response",dataResponse)
+
+
+      }
     } catch (error) {
       console.log(error);
     }
