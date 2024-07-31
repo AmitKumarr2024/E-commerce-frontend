@@ -136,7 +136,9 @@ function Cart(props) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          cartItems:data
+        }),
       });
       const dataResponse = await response.json();
 
