@@ -51,7 +51,7 @@ function Header() {
       toast.success(data.message);
 
       // Remove token from cookies
-      document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
+      document.cookies = "token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
 
       // Update application state
       dispatch(setUserDetails(null));
