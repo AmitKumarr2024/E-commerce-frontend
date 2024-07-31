@@ -76,7 +76,7 @@ function Header() {
       <div className="h-full container mx-auto flex items-center px-14 justify-between">
         <div>
           <Link to="/"  >
-            <img src={image1} className="w-24 h-14 rounded-2xl mix-blend-multiply animate-bounce "  alt="logo" />
+            <img src={image1} className="w-24 h-14 rounded-2xl mix-blend-multiply animate-bounce transition-all "  alt="logo" />
           </Link>
         </div>
         <div className="hidden lg:flex pl-3 items-center w-full max-w-sm justify-evenly border rounded-full focus-within:shadow">
