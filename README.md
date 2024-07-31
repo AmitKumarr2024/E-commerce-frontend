@@ -5,11 +5,14 @@ A simple web app in which all functionality is related e-commerce platform.
 
 ## Table of Contents
 
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+- [Technology](Vite+reactjs,tailwinds,context,node.js,express.js,mongoose)
+- [Usage](only to demonstrate project )
 - [Contact](#contact)
-- [Related Links](#related-links)
+- [Project Links](#related-links)
 
+## Contact
+my email: codes.amitkumar@gmail.com
+
+## Project Links
+https://ecommercemarkets.netlify.app/
 
