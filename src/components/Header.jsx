@@ -9,7 +9,6 @@ import SummaryApi from "../common";
 import { setUserDetails } from "../store/userSlice";
 import ROLE from "../common/role";
 import Context from "../context";
-import Cookies from "js-cookie";
 
 function Header() {
   const navigate = useNavigate();
@@ -53,14 +52,7 @@ function Header() {
         // Remove the token cookie
         Cookies.remove("token", { path: "/" });
 
-        // Verify the cookie has been removed
-        const authToken = Cookies.get("token");
-        console.log("Token after removal:", authToken); // Should be undefined
-
-        // Additional logic after removing the token
-        const userDetails = authToken ? "User Details" : null;
-        console.log("User details:", userDetails);
-
+        
         dispatch(setUserDetails(null));
         navigate("/");
       } else {
