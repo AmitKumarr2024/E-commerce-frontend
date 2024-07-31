@@ -130,7 +130,6 @@ function Cart(props) {
 const handlePayment=()=>{
   
   try {
-    e.preventDefault();
 
     alert("payment done congratulation")
     
