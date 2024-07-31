@@ -131,6 +131,7 @@ function Cart(props) {
 
   const handlePayment = async () => {
     try {
+      console.log("process.env.STRIP_PUBLIC_KEY",process.env.STRIP_PUBLIC_KEY);
       const stripePromise = await loadStripe(process.env.STRIP_PUBLIC_KEY);
       const response = await fetch(PaymentOrderApi.payment.url, {
         method: PaymentOrderApi.payment.method,
