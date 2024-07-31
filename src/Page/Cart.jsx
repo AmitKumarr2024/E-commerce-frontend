@@ -5,7 +5,7 @@ import { FaPlus } from "react-icons/fa6";
 import { FaMinus } from "react-icons/fa6";
 import { MdDelete } from "react-icons/md";
 import { toast } from "react-toastify";
-import {loadStripe} from '@stripe/stripe-js';
+import { loadStripe } from "@stripe/stripe-js";
 import PaymentOrderApi from "../common/order";
 
 import displayINRCurrency from "../helper/displayCurrency";
@@ -131,8 +131,9 @@ function Cart(props) {
 
   const handlePayment = async () => {
     try {
-      console.log("process.env.STRIP_PUBLIC_KEY",process.env.STRIP_PUBLIC_KEY);
-      const stripePromise = await loadStripe(process.env.STRIP_PUBLIC_KEY);
+      console.log("Stripe Public Key:", import.meta.env.VITE_STRIPE_PUBLIC_KEY);
+
+      const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
       const response = await fetch(PaymentOrderApi.payment.url, {
         method: PaymentOrderApi.payment.method,
         credentials: "include",
@@ -140,18 +141,13 @@ function Cart(props) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          cartItems:data
+          cartItems: data,
         }),
       });
       const dataResponse = await response.json();
-      if(dataResponse?.id){
-
-        stripePromise.redirectToCheckout({sessionId:dataResponse?.id
-        })
-
+      if (dataResponse?.id) {
+        stripePromise.redirectToCheckout({ sessionId: dataResponse?.id });
       }
-
-
     } catch (error) {
       console.log(error);
     }
