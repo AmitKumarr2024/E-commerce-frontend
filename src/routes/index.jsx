@@ -13,6 +13,8 @@ import ProductDetails from "../Page/ProductDetails";
 import Cart from "../Page/Cart";
 import Search from "../Page/Search";
 import PageNotFound from "../Page/PageNotFound";
+import Success from "../Page/Success";
+import Cancel from "../Page/Cancel";
 
 const router = createBrowserRouter([
   {
@@ -47,7 +49,10 @@ const router = createBrowserRouter([
           },
         ],
       },
-      { path: "*", element: <PageNotFound/> },
+      { path: "success", element: <Success /> },
+      { path: "cancel", element: <Cancel /> },
+
+      { path: "*", element: <PageNotFound /> },
     ],
   },
 ]);
