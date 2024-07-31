@@ -132,7 +132,7 @@ function Cart(props) {
     try {
       const response = await fetch(PaymentOrderApi.payment.url, {
         method: PaymentOrderApi.payment.method,
-        credentials: "true",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
