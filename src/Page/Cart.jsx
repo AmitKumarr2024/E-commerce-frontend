@@ -128,9 +128,9 @@ function Cart(props) {
 // payment
 
 const handlePayment=()=>{
-  e.preventDefault();
-
+  
   try {
+    e.preventDefault();
 
     alert("payment done congratulation")
     
