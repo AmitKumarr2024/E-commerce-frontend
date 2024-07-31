@@ -1,7 +1,7 @@
 # Ecommerce web app
 
 ## Description 
-A simple web app in which all functionality is related e-commerce platform.
+A simple web app in which all functionality is related to an e-commerce platform.
 
 ## Table of Contents
 
