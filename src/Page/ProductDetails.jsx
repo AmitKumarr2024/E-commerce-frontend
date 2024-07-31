@@ -92,7 +92,7 @@ function ProductDetails(props) {
 
   return (
     <>
-      <div className="container mx-auto py-9 mt-28">
+      <div className="container mx-auto py-9 mt-2">
         <div className="min-h-[300px] flex gap-1 flex-col md:flex-row">
           {/* product Image */}
           <div className="h-96 flex gap-2 flex-col-reverse lg:flex-row lg:gap-2">
