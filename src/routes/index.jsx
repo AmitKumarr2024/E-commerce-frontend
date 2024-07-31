@@ -12,6 +12,7 @@ import CategoryProduct from "../Page/CategoryProduct";
 import ProductDetails from "../Page/ProductDetails";
 import Cart from "../Page/Cart";
 import Search from "../Page/Search";
+import PageNotFound from "../Page/PageNotFound";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,7 @@ const router = createBrowserRouter([
           },
         ],
       },
+      { path: "*", element: <PageNotFound/> },
     ],
   },
 ]);
