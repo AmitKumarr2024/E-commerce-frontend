@@ -32,37 +32,35 @@ function Header() {
   const handleLogout = async (e) => {
     e.preventDefault();
     try {
-        const fetchData = await fetch(SummaryApi.logout.url, {
-            method: SummaryApi.logout.method,
-            credentials: "include",
-            headers: {
-                "Content-Type": "application/json",
-            },
-        });
-
-        if (!fetchData.ok) {
-            const errorData = await fetchData.json();
-            toast.error(errorData.message || "Logout request failed");
-            return;
-        }
-
-        const data = await fetchData.json();
-        if (data.success) {
-            toast.success(data.message);
-
-            // Remove token from cookies
-            document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
-
-            // Update application state
-            dispatch(setUserDetails(null));
-            navigate("/");
-        } else {
-            toast.error(data.message || "Logout failed");
-        }
+      const fetchData = await fetch(SummaryApi.logout.url, {
+        method:SummaryApi.logout.method,
+        credentials: 'include', // Important for sending cookies
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+  
+      if (!fetchData.ok) {
+        const errorData = await fetchData.json();
+        toast.error(errorData.message || 'Logout request failed');
+        return;
+      }
+  
+      const data = await fetchData.json();
+      if (data.success) {
+        toast.success(data.message);
+  
+        // Update application state
+        dispatch(setUserDetails(null));
+        navigate('/');
+      } else {
+        toast.error(data.message || 'Logout failed');
+      }
     } catch (error) {
-        toast.error("Failed to logout, please try again.");
+      toast.error('Failed to logout, please try again.');
     }
-};
+  };
+  
 
 
 
