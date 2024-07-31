@@ -10,6 +10,7 @@ import Context from "./context";
 import { useDispatch } from "react-redux";
 import { setUserDetails } from "./store/userSlice";
 import CartApi from "./common/cart";
+import Cookies from 'js-cookie';
 
 function App(props) {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ function App(props) {
 
   const fetchUserDetails = useCallback(async () => {
     try {
-      const authToken = localStorage.getItem("token");
+      const authToken = Cookies.get('token');
       const dataResponse = await fetch(SummaryApi.current_user.url, {
         method: SummaryApi.current_user.method,
         credentials: "include",
