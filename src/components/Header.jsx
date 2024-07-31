@@ -9,6 +9,7 @@ import SummaryApi from "../common";
 import { setUserDetails } from "../store/userSlice";
 import ROLE from "../common/role";
 import Context from "../context";
+import Cookies from "js-cookie";
 
 function Header() {
   const navigate = useNavigate();
@@ -21,9 +22,7 @@ function Header() {
   const searchQuery = urlSearch.get("q") || "";
   const [search, setSearch] = useState(searchQuery);
 
-
-  console.log("userdetails",user);
-
+  console.log("userdetails", user);
 
   useEffect(() => {
     setSearch(searchQuery);
@@ -33,36 +32,40 @@ function Header() {
     e.preventDefault();
     try {
       const fetchData = await fetch(SummaryApi.logout.url, {
-        method:SummaryApi.logout.method,
-        credentials: 'include', // Important for sending cookies
+        method: SummaryApi.logout.method,
+        credentials: "include", // Important for sending cookies
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
       });
-  
+
       if (!fetchData.ok) {
         const errorData = await fetchData.json();
-        toast.error(errorData.message || 'Logout request failed');
+        toast.error(errorData.message || "Logout request failed");
         return;
       }
-  
+
       const data = await fetchData.json();
       if (data.success) {
         toast.success(data.message);
-  
+
         // Update application state
+        // Remove the token cookie
+        Cookies.remove("token");
+
+        // Verify the cookie has been removed
+        const authToken = Cookies.get("token");
+        console.log("Token after removal:", authToken); // Should be undefined
+
         dispatch(setUserDetails(null));
-        navigate('/');
+        navigate("/");
       } else {
-        toast.error(data.message || 'Logout failed');
+        toast.error(data.message || "Logout failed");
       }
     } catch (error) {
-      toast.error('Failed to logout, please try again.');
+      toast.error("Failed to logout, please try again.");
     }
   };
-  
-
-
 
   const handleSearch = (e) => {
     const { value } = e.target;
