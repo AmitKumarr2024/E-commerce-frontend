@@ -9,6 +9,7 @@ import SummaryApi from "../common";
 import { setUserDetails } from "../store/userSlice";
 import ROLE from "../common/role";
 import Context from "../context";
+import image1 from '../../public/favicon.jpg'
 
 function Header() {
   const navigate = useNavigate();
@@ -75,7 +76,7 @@ function Header() {
       <div className="h-full container mx-auto flex items-center px-14 justify-between">
         <div>
           <Link to="/">
-            <Logo w={90} h={60} />
+            <img src={image1} width={90} height={60} alt="logo" />
           </Link>
         </div>
         <div className="hidden lg:flex pl-3 items-center w-full max-w-sm justify-evenly border rounded-full focus-within:shadow">
