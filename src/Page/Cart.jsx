@@ -5,6 +5,7 @@ import { FaPlus } from "react-icons/fa6";
 import { FaMinus } from "react-icons/fa6";
 import { MdDelete } from "react-icons/md";
 import { toast } from "react-toastify";
+import {loadStripe} from '@stripe/stripe-js';
 import PaymentOrderApi from "../common/order";
 
 import displayINRCurrency from "../helper/displayCurrency";
@@ -130,6 +131,7 @@ function Cart(props) {
 
   const handlePayment = async () => {
     try {
+      const stripePromise = await loadStripe(process.env.STRIP_PUBLIC_KEY);
       const response = await fetch(PaymentOrderApi.payment.url, {
         method: PaymentOrderApi.payment.method,
         credentials: "include",
@@ -141,8 +143,14 @@ function Cart(props) {
         }),
       });
       const dataResponse = await response.json();
+      if(dataResponse?.id){
 
-      console.log(dataResponse);
+        stripePromise.redirectToCheckout({sessionId:dataResponse?.id
+        })
+
+      }
+
+
     } catch (error) {
       console.log(error);
     }
