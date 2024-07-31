@@ -51,11 +51,15 @@ function Header() {
 
         // Update application state
         // Remove the token cookie
-        Cookies.remove("token");
+        Cookies.remove("token", { path: "/" });
 
         // Verify the cookie has been removed
         const authToken = Cookies.get("token");
         console.log("Token after removal:", authToken); // Should be undefined
+
+        // Additional logic after removing the token
+        const userDetails = authToken ? "User Details" : null;
+        console.log("User details:", userDetails);
 
         dispatch(setUserDetails(null));
         navigate("/");
