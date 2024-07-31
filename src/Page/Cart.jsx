@@ -125,23 +125,15 @@ function Cart(props) {
   const handleLoading = () => {
     fetchData();
   };
-// payment
+  // payment
 
-const handlePayment=()=>{
-  
-  try {
-
-    alert("payment done congratulation")
-    
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-
-
-
-
+  const handlePayment = () => {
+    try {
+      alert("payment done congratulation");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     setLoading(true);
@@ -241,26 +233,31 @@ const handlePayment=()=>{
                 })}
           </div>
           {/* Product total */}
-          <div className="mt-5 lg:mt-0 w-full max-w-xl md:max-w-md">
-            {data.length === 0 && !loading ? (
-              <div className="w-full  h-40 my-4  "></div>
-            ) : (
-              <div className="flex flex-col justify-between w-full bg-white h-40 my-4 border border-slate-300 rounded-sm  transition-all ">
-                <h2 className="text-white bg-red-600 px-4 py-1">Summary</h2>
-                <div className="flex items-center justify-between gap-4 mx-3 font-semibold text-slate-500 text-xl">
-                  <p>Quantity</p>
-                  <p>{totalQuantity}</p>
+          {data[0] && (
+            <div className="mt-5 lg:mt-0 w-full max-w-xl md:max-w-md">
+              {data.length === 0 && !loading ? (
+                <div className="w-full  h-40 my-4  "></div>
+              ) : (
+                <div className="flex flex-col justify-between w-full bg-white h-40 my-4 border border-slate-300 rounded-sm  transition-all ">
+                  <h2 className="text-white bg-red-600 px-4 py-1">Summary</h2>
+                  <div className="flex items-center justify-between gap-4 mx-3 font-semibold text-slate-500 text-xl">
+                    <p>Quantity</p>
+                    <p>{totalQuantity}</p>
+                  </div>
+                  <div className="flex items-center justify-between gap-6 mx-3 font-semibold text-slate-500 text-xl">
+                    <p>Total Amount</p>
+                    <p>{displayINRCurrency(toatoAMount)}</p>
+                  </div>
+                  <button
+                    className="w-full py-2 text-white bg-blue-600 px-4  hover:bg-blue-500"
+                    onClick={handlePayment}
+                  >
+                    Payment
+                  </button>
                 </div>
-                <div className="flex items-center justify-between gap-6 mx-3 font-semibold text-slate-500 text-xl">
-                  <p>Total Amount</p>
-                  <p>{displayINRCurrency(toatoAMount)}</p>
-                </div>
-                <button className="w-full py-2 text-white bg-blue-600 px-4  hover:bg-blue-500" onClick={handlePayment}>
-                  Payment
-                </button>
-              </div>
-            )}
-          </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </>
