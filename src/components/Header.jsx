@@ -49,10 +49,7 @@ function Header() {
         toast.success(data.message);
 
         // Update application state
-        // Remove the token cookie
-        Cookies.remove("token", { path: "/" });
 
-        
         dispatch(setUserDetails(null));
         navigate("/");
       } else {
