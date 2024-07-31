@@ -1,4 +1,4 @@
-const domain = "https://e-commerce-backend-tkle.onrender.com/";
+const domain = "https://e-commerce-backend-tkle.onrender.com";
 
 const PaymentOrderApi = {
   payment: {
