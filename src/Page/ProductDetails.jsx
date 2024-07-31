@@ -92,7 +92,7 @@ function ProductDetails(props) {
 
   return (
     <>
-      <div className="container mx-auto py-9 mt-10">
+      <div className="container mx-auto py-9 mt-28">
         <div className="min-h-[300px] flex gap-1 flex-col md:flex-row">
           {/* product Image */}
           <div className="h-96 flex gap-2 flex-col-reverse lg:flex-row lg:gap-2">
@@ -126,7 +126,7 @@ function ProductDetails(props) {
             {loading ? (
               <div className="h-[350px] w-[350px] md:h-96 md:w-[420px] bg-slate-200 rounded animate-pulse"></div>
             ) : (
-              <div className="relative h-[450px] w-[380px] mt-4 mr-6 md:h-96 md:w-96 bg-slate-200 rounded p-1 cursor-pointer">
+              <div className="relative h-[450px] w-[380px] mr-6 md:h-96 md:w-96 bg-slate-200 rounded p-1 cursor-pointer">
                 <img
                   src={activeImage}
                   className="h-full w-full object-scale-down mix-blend-multiply"
