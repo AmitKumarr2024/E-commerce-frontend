@@ -1,8 +1,24 @@
-# React + Vite
+# Ecommerce web app
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description 
+A simple web app in which all functionality is related to an e-commerce platform.
 
-Currently, two official plugins are available:
+## Table of Contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Technology](#technology)
+- [Usage](#usage)
+- [Contact](#contact)
+- [Project Links](#related-links)
+  
+## Technology
+Vite+reactjs, tailwinds, context, node.js, express.js, mongoose
+
+## Usage
+only to demonstrate the project 
+
+## Contact
+my email: codes.amitkumar@gmail.com
+
+## Project Links
+https://ecommercemarkets.netlify.app/
+
