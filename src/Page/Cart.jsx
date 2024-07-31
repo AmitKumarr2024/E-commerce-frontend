@@ -125,6 +125,24 @@ function Cart(props) {
   const handleLoading = () => {
     fetchData();
   };
+// payment
+
+const handlePayment=()=>{
+  e.preventDefault();
+
+  try {
+
+    alert("payment done congratulation")
+    
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+
+
+
+
 
   useEffect(() => {
     setLoading(true);
@@ -238,7 +256,7 @@ function Cart(props) {
                   <p>Total Amount</p>
                   <p>{displayINRCurrency(toatoAMount)}</p>
                 </div>
-                <button className="w-full py-2 text-white bg-blue-600 px-4  hover:bg-blue-500">
+                <button className="w-full py-2 text-white bg-blue-600 px-4  hover:bg-blue-500" onClick={handlePayment}>
                   Payment
                 </button>
               </div>
