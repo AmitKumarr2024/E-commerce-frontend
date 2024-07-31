@@ -126,7 +126,7 @@ function ProductDetails(props) {
             {loading ? (
               <div className="h-[350px] w-[350px] md:h-96 md:w-[420px] bg-slate-200 rounded animate-pulse"></div>
             ) : (
-              <div className="relative h-[450px] w-[380px] mt-0 md:mt-44 mr-6 md:h-96 md:w-96 bg-slate-200 rounded p-1 cursor-pointer">
+              <div className="relative h-[450px] w-[380px] mt-0 md:mt-60 mr-6 md:h-96 md:w-96 bg-slate-200 rounded p-1 cursor-pointer">
                 <img
                   src={activeImage}
                   className="h-full w-full object-scale-down mix-blend-multiply"
