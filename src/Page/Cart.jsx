@@ -140,12 +140,7 @@ function Cart(props) {
       });
       const dataResponse = await response.json();
 
-      if(dataResponse.success){
-
-        toast.success("payment response",dataResponse)
-
-
-      }
+      console.log(dataResponse);
     } catch (error) {
       console.log(error);
     }
