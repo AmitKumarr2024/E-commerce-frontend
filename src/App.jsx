@@ -16,15 +16,27 @@ function App(props) {
   const [cartProductCount, setCartProductCount] = useState(0);
 
   const fetchUserDetails = useCallback(async () => {
-    const dataResponse = await fetch(SummaryApi.current_user.url, {
-      method: SummaryApi.current_user.method,
-      credentials: "include",
-    });
+    try {
+      const dataResponse = await fetch(SummaryApi.current_user.url, {
+        method: SummaryApi.current_user.method,
+        credentials: "include",
+      });
 
-    const dataApi = await dataResponse.json();
+      if (!dataResponse.ok) {
+        throw new Error(`HTTP error! status: ${dataResponse.status}`);
+      }
 
-    if (dataApi.success) {
-      dispatch(setUserDetails(dataApi?.data));
+      const dataApi = await dataResponse.json();
+      console.log("User details API response:", dataApi);
+
+      if (dataApi.success) {
+        dispatch(setUserDetails(dataApi?.data));
+      } else {
+        console.error("Failed to fetch user details:", dataApi.message);
+      }
+    } catch (error) {
+      console.error("Error fetching user details:", error);
+      toast.error("Failed to fetch user details. Please try again later.");
     }
   }, [dispatch]);
 
@@ -35,15 +47,21 @@ function App(props) {
         credentials: "include",
       });
 
-      const dataApi = await dataResponse.json();
-      // console.log("data in cart", dataApi);
-      // if (dataApi.success) {
-      //   dispatch(setUserDetails(dataApi.data));
-      // }
+      if (!dataResponse.ok) {
+        throw new Error(`HTTP error! status: ${dataResponse.status}`);
+      }
 
-      setCartProductCount(dataApi?.data?.count);
+      const dataApi = await dataResponse.json();
+      console.log("Cart items API response:", dataApi);
+
+      if (dataApi.success) {
+        setCartProductCount(dataApi?.data?.count);
+      } else {
+        console.error("Failed to fetch cart details:", dataApi.message);
+      }
     } catch (error) {
-      console.error("Failed to fetch cart details. Please try again later.");
+      console.error("Error fetching cart details:", error);
+      toast.error("Failed to fetch cart details. Please try again later.");
     }
   };
 
