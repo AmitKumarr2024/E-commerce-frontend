@@ -48,7 +48,7 @@ function OrderPage(props) {
                             src={product.image}
                             className="w-28 h-28 bg-slate-200 object-scale-down mix-blend-multiply p-2"
                           />
-                          <div className="font-medium text-lg text-ellipsis line-clamp-1">
+                          <div className="font-medium text-lg text-ellipsis line-clamp-3">
                             <div>{product.name}</div>
                             <div className="flex items-center gap-5">
                               <div className="text-lg text-green-600 font-semibold">
