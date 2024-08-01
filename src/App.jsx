@@ -36,7 +36,7 @@ function App(props) {
       }
     } catch (error) {
       console.error("Error fetching user details:", error);
-      toast.error("Failed to fetch user details. Please try again later.");
+      toast.error("Please Logint to order");
     }
   }, [dispatch]);
 
@@ -61,7 +61,7 @@ function App(props) {
       }
     } catch (error) {
       console.error("Error fetching cart details:", error);
-      toast.error("Failed to fetch cart details. Please try again later.");
+      toast.error("Please Logint to check cart details.");
     }
   };
 
