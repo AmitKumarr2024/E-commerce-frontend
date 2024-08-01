@@ -15,6 +15,7 @@ import Search from "../Page/Search";
 import PageNotFound from "../Page/PageNotFound";
 import Success from "../Page/Success";
 import Cancel from "../Page/Cancel";
+import OrderPage from "../Page/OrderPage";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +52,8 @@ const router = createBrowserRouter([
       },
       { path: "success", element: <Success /> },
       { path: "cancel", element: <Cancel /> },
+      { path: "order", element: <OrderPage /> },
+
 
       { path: "*", element: <PageNotFound /> },
     ],
