@@ -9,21 +9,20 @@ import SummaryApi from "../common";
 import { setUserDetails } from "../store/userSlice";
 import ROLE from "../common/role";
 import Context from "../context";
-import image1 from '../../public/favicon.jpg'
+import image1 from "../../public/favicon.jpg";
 
 function Header() {
   const navigate = useNavigate();
-  const user = useSelector((state) => state.user.user);
+  const user = useSelector(state => state?.user?.user);
   const dispatch = useDispatch();
   const [profileMenu, setProfileMenu] = useState(false);
   const context = useContext(Context);
   const searchLocation = useLocation();
-  const urlSearch = new URLSearchParams(searchLocation.search);
+  const urlSearch = new URLSearchParams(searchLocation?.search);
   const searchQuery = urlSearch.get("q") || "";
   const [search, setSearch] = useState(searchQuery);
 
-  console.log("userdetails", user);
-
+  
   useEffect(() => {
     setSearch(searchQuery);
   }, [searchQuery]);
@@ -38,7 +37,7 @@ function Header() {
           "Content-Type": "application/json",
         },
       });
-
+      
       if (!fetchData.ok) {
         const errorData = await fetchData.json();
         toast.error(errorData.message || "Logout request failed");
@@ -48,9 +47,9 @@ function Header() {
       const data = await fetchData.json();
       if (data.success) {
         toast.success(data.message);
-
+        
         // Update application state
-
+        
         dispatch(setUserDetails(null));
         navigate("/");
       } else {
@@ -60,7 +59,7 @@ function Header() {
       toast.error("Failed to logout, please try again.");
     }
   };
-
+  
   const handleSearch = (e) => {
     const { value } = e.target;
     setSearch(value);
@@ -70,13 +69,18 @@ function Header() {
       navigate(`/search`);
     }
   };
-
+  
+  console.log("userdetails", user);
   return (
     <header className="h-16 shadow-md bg-white fixed w-full z-50">
       <div className="h-full container mx-auto flex items-center px-14 justify-between">
         <div>
-          <Link to="/"  >
-            <img src={image1} className="w-24 h-14 rounded-2xl mix-blend-multiply animate-pulse transition-all "  alt="logo" />
+          <Link to="/">
+            <img
+              src={image1}
+              className="w-24 h-14 rounded-2xl mix-blend-multiply animate-pulse transition-all "
+              alt="logo"
+            />
           </Link>
         </div>
         <div className="hidden lg:flex pl-3 items-center w-full max-w-sm justify-evenly border rounded-full focus-within:shadow">
