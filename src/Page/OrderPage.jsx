@@ -34,6 +34,15 @@ function OrderPage(props) {
               <p className="font-medium text-lg">
                 {moment(item.createdAt).format("LL")}
               </p>
+              <div>
+                {item.productDetails.map((product, index) => {
+                  return (
+                    <div>
+                      <img src={product.image} alt="" />
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           );
         })}
