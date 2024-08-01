@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PaymentOrderApi from "../common/order";
+import moment from "moment";
 
 function OrderPage(props) {
   const [data, setData] = useState([]);
@@ -30,7 +31,9 @@ function OrderPage(props) {
         {data.map((item, index) => {
           return (
             <div key={item.userId + index}>
-              <p>{moment(item.createdAt).format("LL")}</p>
+              <p className="font-medium text-lg">
+                {moment(item.createdAt).format("LL")}
+              </p>
             </div>
           );
         })}
