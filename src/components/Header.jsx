@@ -140,6 +140,13 @@ function Header() {
                   >
                     Setting
                   </Link>
+                  <Link
+                    to="/order"
+                    className="whitespace-nowrap hover:bg-slate-200 p-1"
+                    onClick={() => setProfileMenu((prev) => !prev)}
+                  >
+                    My Order
+                  </Link>
                 </nav>
               </div>
             )}
