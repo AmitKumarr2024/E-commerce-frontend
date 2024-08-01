@@ -40,7 +40,7 @@ function OrderPage(props) {
                   return (
                     <div key={product.productId + index}>
                       <img
-                        src={product.image[0]}
+                        src={product.image}
                         className="w-28 h-28 bg-slate-200 object-scale-down mix-blend-multiply p-2"
                       />
                       <div>{product.name}</div>
