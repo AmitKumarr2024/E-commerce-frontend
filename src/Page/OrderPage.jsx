@@ -12,6 +12,7 @@ function OrderPage(props) {
       });
       const dataResponse = await response.json();
 
+      setData(dataResponse.data);
       console.log("order-list", dataResponse);
     } catch (error) {
       console.log("order", error);
@@ -22,7 +23,20 @@ function OrderPage(props) {
     fetchOrderDetails();
   }, []);
 
-  return <div>Order Page</div>;
+  return (
+    <div>
+      {!data[0] && <p>No Order available</p>}
+      <div>
+        {data.map((item, index) => {
+          return (
+            <div key={item.userId + index}>
+              <p>{moment(item.createdAt).format("LL")}</p>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
 }
 
 export default OrderPage;
