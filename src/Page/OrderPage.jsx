@@ -42,7 +42,6 @@ function OrderPage(props) {
                       <img
                         src={product.image[0]}
                         className="w-28 h-28 bg-slate-200 object-scale-down mix-blend-multiply p-2"
-                        alt="Image of product"
                       />
                       <div>{product.name}</div>
                       <div className="flex items-center gap-5">
