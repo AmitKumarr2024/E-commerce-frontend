@@ -10,35 +10,21 @@ import Context from "./context";
 import { useDispatch } from "react-redux";
 import { setUserDetails } from "./store/userSlice";
 import CartApi from "./common/cart";
-import Cookies from 'js-cookie';
 
 function App(props) {
   const dispatch = useDispatch();
   const [cartProductCount, setCartProductCount] = useState(0);
 
   const fetchUserDetails = useCallback(async () => {
-    try {
-      const authToken = Cookies.get('token');
-      const dataResponse = await fetch(SummaryApi.current_user.url, {
-        method: SummaryApi.current_user.method,
-        credentials: "include",
-        headers:{
-          'Content-Type':'application/json',
-          "Authorization": `Bearer ${authToken}`
-        }
-      });
+    const dataResponse = await fetch(SummaryApi.current_user.url, {
+      method: SummaryApi.current_user.method,
+      credentials: "include",
+    });
 
-      if (!dataResponse.ok) {
-        throw new Error("Failed to fetch user details");
-      }
+    const dataApi = await dataResponse.json();
 
-      const dataApi = await dataResponse.json();
-      if (dataApi.success) {
-        dispatch(setUserDetails(dataApi.data));
-        toast.success(dataApi.success)
-      }
-    } catch (error) {
-      console.error("Failed to fetch user details. Please try again later.");
+    if (dataApi.success) {
+      dispatch(setUserDetails(dataApi.data));
     }
   }, [dispatch]);
 
@@ -50,12 +36,12 @@ function App(props) {
       });
 
       const dataApi = await dataResponse.json();
-      console.log("data in cart", dataApi);
+      // console.log("data in cart", dataApi);
       // if (dataApi.success) {
       //   dispatch(setUserDetails(dataApi.data));
       // }
 
-      setCartProductCount(dataApi.data.count);
+      setCartProductCount(dataApi?.data?.count);
     } catch (error) {
       console.error("Failed to fetch cart details. Please try again later.");
     }
@@ -68,9 +54,8 @@ function App(props) {
 
   return (
     <>
-      <ToastContainer 
-      position="top-center"
-      /> {/* Ensure ToastContainer is at the top level */}
+      <ToastContainer position="top-center" />{" "}
+      {/* Ensure ToastContainer is at the top level */}
       <Context.Provider
         value={{ fetchUserDetails, cartProductCount, fetchUserAddToCart }}
       >
