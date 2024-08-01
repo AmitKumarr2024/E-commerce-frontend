@@ -5,6 +5,10 @@ const PaymentOrderApi = {
     url: `${domain}/api/payment/checkout`,
     method: "post",
   },
+  getOrder: {
+    url: `${domain}/api/payment/order-list`,
+    method: "get",
+  },
 };
 
 export default PaymentOrderApi;
