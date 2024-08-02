@@ -41,6 +41,9 @@ function AdminPannel(props) {
               <Link to={"all-product"} className="px-2 py-1 hover:bg-slate-100">
                 All Product
               </Link>
+              <Link to={"all-order"} className="px-2 py-1 hover:bg-slate-100">
+                All Order
+              </Link>
             </nav>
           </div>
         </aside>
