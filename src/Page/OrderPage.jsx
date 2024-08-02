@@ -93,10 +93,9 @@ function OrderPage(props) {
                         >
                           <img
                             src={
-                              product?.image.replace(
-                                /^http:\/\//i,
-                                "https://"
-                              ) || product.productImage[0]
+                              product?.image
+                              ? product.image.replace(/^http:\/\//i, "https://")
+                              : product.productImage?.replace(/^http:\/\//i, "https://")
                             }
                             alt={product.name}
                             className="w-24 h-32 bg-slate-200 object-scale-down mix-blend-multiply p-2 rounded-md"
