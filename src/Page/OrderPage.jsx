@@ -31,7 +31,7 @@ function OrderPage(props) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          product: productID, // Send the productId
+          productId: productID, // Send the productId
         }),
       });
   
@@ -61,6 +61,7 @@ function OrderPage(props) {
       console.log("Order delete error:", error);
     }
   };
+  
   
   useEffect(() => {
     fetchOrderDetails();
