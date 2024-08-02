@@ -87,15 +87,17 @@ function OrderPage(props) {
                     {item.productDetails.map((product, index) => {
                       return (
                         <Link
-                        to={"/product/" + product._id}
+                          to={"/product/" + product._id}
                           key={product.productId + index}
                           className="flex gap-4 bg-blue-50 p-4 rounded-md"
                         >
                           <img
-                            src={product?.image.replace(
-                              /^http:\/\//i,
-                              "https://"
-                            )}
+                            src={
+                              product?.image.replace(
+                                /^http:\/\//i,
+                                "https://"
+                              ) || product.productImage[0]
+                            }
                             alt={product.name}
                             className="w-24 h-32 bg-slate-200 object-scale-down mix-blend-multiply p-2 rounded-md"
                           />
