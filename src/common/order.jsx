@@ -10,7 +10,7 @@ const PaymentOrderApi = {
     method: "get",
   },
   cancelOrder: {
-    url: `${domain}/api/payment/orders`,
+    url: `${domain}/api/payment/order/:orderId`,
     method: "post",
   },
 };
