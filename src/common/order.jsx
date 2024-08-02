@@ -1,4 +1,4 @@
-const domain =  import.meta.env.BACKEND_RENDER_API_DOMAIN;
+const domain = import.meta.env.BACKEND_RENDER_API_DOMAIN;
 
 const PaymentOrderApi = {
   payment: {

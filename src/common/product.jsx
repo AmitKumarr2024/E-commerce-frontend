@@ -1,4 +1,4 @@
-const productDomain =import.meta.env.BACKEND_RENDER_API_DOMAIN;
+const productDomain = import.meta.env.BACKEND_RENDER_API_DOMAIN;
 
 const ProductApi = {
   createProduct: {
@@ -16,7 +16,7 @@ const ProductApi = {
   categoryProduct: {
     url: `${productDomain}/api/products/get-category`,
     method: "get",
-  }, 
+  },
   SelectCategoryProduct: {
     url: `${productDomain}/api/products/select-category`,
     method: "post",
@@ -32,7 +32,7 @@ const ProductApi = {
   FilterProduct: {
     url: `${productDomain}/api/products/category`,
     method: "post",
-  }
+  },
 };
 
 export default ProductApi;
