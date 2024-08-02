@@ -1,4 +1,4 @@
-const domain = "https://e-commerce-backend-tkle.onrender.com";
+const domain =  import.meta.env.BACKEND_RENDER_API_DOMAIN;
 
 const PaymentOrderApi = {
   payment: {

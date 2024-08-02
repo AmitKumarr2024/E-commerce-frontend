@@ -1,25 +1,25 @@
-const cartDomain = "https://e-commerce-backend-tkle.onrender.com/";
+const cartDomain = import.meta.env.BACKEND_RENDER_API_DOMAIN;
 
 const CartApi = {
   addtoCart: {
-    url: `${cartDomain}api/cart/addToCart`,
+    url: `${cartDomain}/api/cart/addToCart`,
     method: "post",
   },
 
   itemInCart: {
-    url: `${cartDomain}api/cart/cart-items`,
+    url: `${cartDomain}/api/cart/cart-items`,
     method: "get",
   },
   CartItemView: {
-    url: `${cartDomain}api/cart/cart-final`,
+    url: `${cartDomain}/api/cart/cart-final`,
     method: "get",
   },
   UpdateCartProduct: {
-    url: `${cartDomain}api/cart/update-cart`,
+    url: `${cartDomain}/api/cart/update-cart`,
     method: "post",
   },
   DeleteCartProduct: {
-    url: `${cartDomain}api/cart/delete-cart`,
+    url: `${cartDomain}/api/cart/delete-cart`,
     method: "post",
   },
 };

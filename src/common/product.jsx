@@ -1,4 +1,4 @@
-const productDomain = "https://e-commerce-backend-tkle.onrender.com";
+const productDomain =import.meta.env.BACKEND_RENDER_API_DOMAIN;
 
 const ProductApi = {
   createProduct: {
