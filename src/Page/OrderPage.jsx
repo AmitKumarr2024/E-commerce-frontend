@@ -77,6 +77,7 @@ function OrderPage(props) {
                     })}
                   </div>
                   <div className="p-4 lg:w-1/3 bg-gray-50 space-y-4">
+                    <div>
                    {/* delete button below*/}
                    <div
                       className="absolute right-0 p-1 mr-2 text-2xl text-red-600 rounded-full hover:bg-red-500 hover:text-white cursor-pointer"
@@ -84,7 +85,6 @@ function OrderPage(props) {
                     >
                       <MdDelete />
                     </div>
-                    <div>
                       <div className="text-lg font-medium text-gray-800">
                         Payment Details:
                       </div>
