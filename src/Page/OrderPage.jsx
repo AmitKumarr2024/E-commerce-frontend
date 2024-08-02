@@ -6,6 +6,9 @@ import { MdDelete } from "react-icons/md";
 
 function OrderPage(props) {
   const [data, setData] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [cancelReason, setCancelReason] = useState('');
+  const [currentProductId, setCurrentProductId] = useState(null);
 
   const fetchOrderDetails = async () => {
     try {
@@ -22,7 +25,17 @@ function OrderPage(props) {
     }
   };
 
-  const orderDelete = async (productID) => {
+  const handleDeleteClick = (productId) => {
+    setCurrentProductId(productId);
+    setShowModal(true);
+  };
+
+  const confirmDelete = async () => {
+    if (!cancelReason) {
+      alert('Please provide a reason for cancellation');
+      return;
+    }
+
     try {
       const response = await fetch(PaymentOrderApi.cancelOrder.url, {
         method: PaymentOrderApi.cancelOrder.method,
@@ -31,10 +44,11 @@ function OrderPage(props) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          productId: productID, // Send the productId
+          productId: currentProductId,
+          reason: cancelReason,
         }),
       });
-  
+
       if (!response.ok) {
         const errorText = await response.text();
         console.error(
@@ -45,9 +59,9 @@ function OrderPage(props) {
         );
         return;
       }
-  
+
       const dataResponse = await response.json();
-  
+
       if (dataResponse.success) {
         console.log(dataResponse.message);
         fetchOrderDetails(); // Refresh order list after deletion
@@ -60,9 +74,12 @@ function OrderPage(props) {
     } catch (error) {
       console.log("Order delete error:", error);
     }
+
+    setShowModal(false);
+    setCancelReason('');
+    setCurrentProductId(null);
   };
-  
-  
+
   useEffect(() => {
     fetchOrderDetails();
   }, []);
@@ -112,7 +129,7 @@ function OrderPage(props) {
                   {/* Delete button */}
                   <div
                     className="absolute right-2 top-2 p-2 text-2xl text-red-600 rounded-full hover:bg-red-500 hover:text-white cursor-pointer"
-                    onClick={() => orderDelete(item.productDetails[0].productId)}
+                    onClick={() => handleDeleteClick(item.productDetails[0].productId)}
                   >
                     <MdDelete />
                   </div>
@@ -150,6 +167,34 @@ function OrderPage(props) {
           </div>
         ))}
       </div>
+
+      {showModal && (
+        <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
+          <div className="bg-white p-6 rounded-lg shadow-lg">
+            <h2 className="text-xl font-semibold mb-4">Cancel Order</h2>
+            <textarea
+              value={cancelReason}
+              onChange={(e) => setCancelReason(e.target.value)}
+              placeholder="Please provide a reason for cancellation"
+              className="w-full h-24 p-2 border border-gray-300 rounded-md mb-4"
+            />
+            <div className="flex justify-end gap-4">
+              <button
+                onClick={confirmDelete}
+                className="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600"
+              >
+                Confirm
+              </button>
+              <button
+                onClick={() => setShowModal(false)}
+                className="bg-gray-300 py-2 px-4 rounded-md hover:bg-gray-400"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
