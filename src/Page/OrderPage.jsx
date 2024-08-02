@@ -22,7 +22,7 @@ function OrderPage(props) {
     }
   };
 
-  const orderDelete = async (id) => {
+  const orderDelete = async (productID) => {
     try {
       const response = await fetch(PaymentOrderApi.cancelOrder.url, {
         method: PaymentOrderApi.cancelOrder.method,
@@ -31,10 +31,10 @@ function OrderPage(props) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          id: id,
+          productID: productID,
         }),
       });
-
+  
       // Check if the response is OK
       if (!response.ok) {
         const errorText = await response.text();
@@ -46,13 +46,12 @@ function OrderPage(props) {
         );
         return;
       }
-
+  
       // Attempt to parse the response as JSON
       const dataResponse = await response.json();
-
+  
       if (dataResponse.success) {
         console.log(dataResponse.message);
-        
         fetchOrderDetails(); // Refresh order list after deletion
       } else {
         console.log(
@@ -64,6 +63,7 @@ function OrderPage(props) {
       console.log("Order delete error:", error);
     }
   };
+  
 
   useEffect(() => {
     fetchOrderDetails();
