@@ -22,38 +22,7 @@ function OrderPage(props) {
     }
   };
 
-  const orderDelete = async (id) => {
-    try {
-      const response = await fetch(PaymentOrderApi.cancelOrder.url, {
-        method: PaymentOrderApi.cancelOrder.method,
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          orderId: id,
-        }),
-      });
   
-      // Check if the response is OK
-      if (!response.ok) {
-        const errorText = await response.text();
-        console.error("Failed to delete order. Status:", response.status, "Response:", errorText);
-        return;
-      }
-  
-      // Attempt to parse the response as JSON
-      const dataResponse = await response.json();
-  
-      if (dataResponse.success) {
-        fetchOrderDetails(); // Refresh order list after deletion
-      } else {
-        console.log("Failed to delete order:", dataResponse.message || "Unknown error");
-      }
-    } catch (error) {
-      console.log("Order delete error:", error);
-    }
-  };
   
 
   useEffect(() => {
@@ -105,13 +74,7 @@ function OrderPage(props) {
                     })}
                   </div>
                   <div className="p-4 lg:w-1/3 bg-gray-50 space-y-4 relative">
-                    {/* delete button */}
-                    <div
-                      className="absolute right-2 top-2 p-2 text-2xl text-red-600 rounded-full hover:bg-red-500 hover:text-white cursor-pointer"
-                      onClick={(e) => orderDelete(item?.product?.productId)}
-                    >
-                      <MdDelete />
-                    </div>
+                    
                     <div>
                       <div className="text-lg font-medium text-gray-800">
                         Payment Details:

@@ -8,11 +8,7 @@ const PaymentOrderApi = {
   getOrder: {
     url: `${domain}/api/payment/order-list`,
   },
-  cancelOrder:{
-    url: `${domain}/api/payment/orders`,
-    method: "delete",
-
-  }
+  
 };
 
 export default PaymentOrderApi;
