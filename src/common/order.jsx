@@ -7,12 +7,12 @@ const PaymentOrderApi = {
   },
   getOrder: {
     url: `${domain}/api/payment/order-list`,
+    method: "get",
   },
-  cancelOrder:{
+  cancelOrder: {
     url: `${domain}/api/payment/orders`,
-    method: "delete",
-
-  }
+    method: "post",
+  },
 };
 
 export default PaymentOrderApi;
