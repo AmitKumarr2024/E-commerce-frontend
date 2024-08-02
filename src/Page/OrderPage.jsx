@@ -31,7 +31,7 @@ function OrderPage(props) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          orderId: id,
+          id: id,
         }),
       });
 
