@@ -26,7 +26,6 @@ function OrderPage(props) {
     try {
       const response = await fetch(PaymentOrderApi.cancelOrder.url, {
         method: PaymentOrderApi.cancelOrder.method,
-
         credentials: "include",
         headers: {
           "Content-Type": "application/json",
@@ -35,16 +34,27 @@ function OrderPage(props) {
           orderId: id,
         }),
       });
+  
+      // Check if the response is OK
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error("Failed to delete order. Status:", response.status, "Response:", errorText);
+        return;
+      }
+  
+      // Attempt to parse the response as JSON
       const dataResponse = await response.json();
+  
       if (dataResponse.success) {
         fetchOrderDetails(); // Refresh order list after deletion
       } else {
-        console.log("Failed to delete order");
+        console.log("Failed to delete order:", dataResponse.message || "Unknown error");
       }
     } catch (error) {
-      console.log("order delete error", error);
+      console.log("Order delete error:", error);
     }
   };
+  
 
   useEffect(() => {
     fetchOrderDetails();
