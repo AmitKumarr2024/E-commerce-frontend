@@ -44,7 +44,7 @@ function OrderPage(props) {
                       <img
                         src={product.image}
                         alt={product.name}
-                        className="w-28 h-28 bg-slate-200 object-cover mix-blend-multiply p-2 rounded-md"
+                        className="w-24 h-32 bg-slate-200 object-scale-down mix-blend-multiply p-2 rounded-md"
                       />
                       <div className="flex flex-col justify-between">
                         <div className="font-medium text-lg text-gray-800 line-clamp-3">
