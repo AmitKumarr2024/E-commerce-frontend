@@ -26,80 +26,69 @@ function OrderPage(props) {
   }, []);
 
   return (
-    <div>
-      {!data[0] && <p>No Order available</p>}
-      <div className="p-4 w-full ">
-        {data.map((item, index) => {
-          return (
-            <div key={item.userId + index}>
-              <p className="font-medium text-lg ">
-                {moment(item.createdAt).format("LL")}
-              </p>
-              <div className="border rounded">
-                <div className="flex justify-between flex-col lg:flex-row">
-                  <div className="grid gap-1">
-                    {item.productDetails.map((product, index) => {
-                      return (
-                        <div
-                          key={product.productId + index}
-                          className="flex gap-3 bg-blue-100 "
-                        >
-                          <img
-                            src={product.image}
-                            className="w-28 h-28 bg-slate-200 object-scale-down mix-blend-multiply p-2"
-                          />
-                          <div className="font-medium text-lg text-ellipsis line-clamp-3">
-                            <div>{product.name}</div>
-                            <div className="flex items-center gap-5">
-                              <div className="text-lg text-green-600 font-semibold">
-                                {displayINRCurrency(product.price)}
-                              </div>
-                              <div>Quantity:{product.quantity}</div>
-                            </div>
-                          </div>
+    <div className="container mx-auto p-4">
+  {!data[0] && <p className="text-center text-gray-500">No Order available</p>}
+  <div className="space-y-6">
+    {data.map((item, index) => {
+      return (
+        <div key={item.userId + index} className="space-y-4">
+          <p className="font-medium text-lg text-gray-800">
+            {moment(item.createdAt).format("LL")}
+          </p>
+          <div className="border rounded-lg shadow-sm overflow-hidden">
+            <div className="lg:flex">
+              <div className="grid gap-4 p-4 lg:w-2/3">
+                {item.productDetails.map((product, index) => {
+                  return (
+                    <div key={product.productId + index} className="flex gap-4 bg-blue-50 p-4 rounded-md">
+                      <img
+                        src={product.image}
+                        alt={product.name}
+                        className="w-28 h-28 bg-slate-200 object-cover mix-blend-multiply p-2 rounded-md"
+                      />
+                      <div className="flex flex-col justify-between">
+                        <div className="font-medium text-lg text-gray-800 line-clamp-3">
+                          {product.name}
                         </div>
-                      );
-                    })}
-                  </div>
-                  <div className="flex flex-col min-w-[300px] gap-4 p-2">
-                    <div>
-                      <div className="text-lg font-medium">
-                        Payment Details:
-                      </div>
-                      <div className=" ml-1">
-                        Payment Method:
-                        {item.paymentDetails.payment_method_type[0]}
-                      </div>
-                      <div className=" ml-1">
-                        Payment Status:{item.paymentDetails.payment_status}
-                      </div>
-                    </div>
-                    <div>
-                      <div className="text-lg font-medium">
-                        Shipping Details
-                      </div>
-                      {item.shipping_options.map((shipping, index) => {
-                        return (
-                          <div
-                            className=" ml-1"
-                            key={shipping.shipping_rate + index}
-                          >
-                            Shipping Amount : {shipping.shipping_amount}
+                        <div className="flex items-center gap-5">
+                          <div className="text-lg text-green-600 font-semibold">
+                            {displayINRCurrency(product.price)}
                           </div>
-                        );
-                      })}
+                          <div className="text-gray-600">Quantity: {product.quantity}</div>
+                        </div>
+                      </div>
                     </div>
-                  </div>
+                  );
+                })}
+              </div>
+              <div className="p-4 lg:w-1/3 bg-gray-50 space-y-4">
+                <div>
+                  <div className="text-lg font-medium text-gray-800">Payment Details:</div>
+                  <div className="ml-1 text-gray-600">Payment Method: {item.paymentDetails.payment_method_type[0]}</div>
+                  <div className="ml-1 text-gray-600">Payment Status: {item.paymentDetails.payment_status}</div>
                 </div>
-                <div className="font-semibold lg:text-xl w-fit ml-auto min-w-[300px]">
-                  Total Amount : {item.totalAmount}
+                <div>
+                  <div className="text-lg font-medium text-gray-800">Shipping Details</div>
+                  {item.shipping_options.map((shipping, index) => {
+                    return (
+                      <div key={shipping.shipping_rate + index} className="ml-1 text-gray-600">
+                        Shipping Amount: {shipping.shipping_amount}
+                      </div>
+                    );
+                  })}
+                </div>
+                <div className="text-lg font-semibold text-gray-800">
+                  Total Amount: {displayINRCurrency(item.totalAmount)}
                 </div>
               </div>
             </div>
-          );
-        })}
-      </div>
-    </div>
+          </div>
+        </div>
+      );
+    })}
+  </div>
+</div>
+
   );
 }
 
