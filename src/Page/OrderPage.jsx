@@ -24,7 +24,25 @@ function OrderPage(props) {
 
   const orderDelete = async (id) => {
     try {
-    } catch (error) {}
+      const response = await fetch(PaymentOrderApi.cancelOrder.url, {
+        method: PaymentOrderApi.cancelOrder.method,
+
+        credentials: "include",
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+          orderId:id
+        })
+      });
+      if (response.ok) {
+        fetchOrderDetails(); // Refresh order list after deletion
+      } else {
+        console.log("Failed to delete order");
+      }
+    } catch (error) {
+      console.log("order delete error", error);
+    }
   };
 
   useEffect(() => {
@@ -47,7 +65,6 @@ function OrderPage(props) {
               <div className="border rounded-lg shadow-sm overflow-hidden">
                 <div className="lg:flex">
                   <div className="grid gap-4 p-4 lg:w-2/3">
-                 
                     {item.productDetails.map((product, index) => {
                       return (
                         <div
@@ -76,15 +93,15 @@ function OrderPage(props) {
                       );
                     })}
                   </div>
-                  <div className="p-4 lg:w-1/3 bg-gray-50 space-y-4">
-                    <div>
-                   {/* delete button below*/}
-                   <div
-                      className="absolute right-0 p-1 mr-2 text-2xl text-red-600 rounded-full hover:bg-red-500 hover:text-white cursor-pointer"
-                      onClick={(e) => deleteCart()}
+                  <div className="p-4 lg:w-1/3 bg-gray-50 space-y-4 relative">
+                    {/* delete button */}
+                    <div
+                      className="absolute right-2 top-2 p-2 text-2xl text-red-600 rounded-full hover:bg-red-500 hover:text-white cursor-pointer"
+                      onClick={(e) => orderDelete(product.productId)}
                     >
                       <MdDelete />
                     </div>
+                    <div>
                       <div className="text-lg font-medium text-gray-800">
                         Payment Details:
                       </div>
