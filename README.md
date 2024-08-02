@@ -1,4 +1,4 @@
-# Ecommerce web app
+# Ecommerce web-app
 
 ## Description 
 A simple web app in which all functionality is related to an e-commerce platform.
