@@ -13,6 +13,10 @@ const PaymentOrderApi = {
     url: `${domain}/api/payment/orders`,
     method: "post",
   },
+  allOrder: {
+    url: `${domain}/api/payment/allorder`,
+    method: "get",
+  },
 };
 
 export default PaymentOrderApi;
