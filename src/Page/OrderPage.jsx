@@ -3,7 +3,6 @@ import PaymentOrderApi from "../common/order";
 import moment from "moment";
 import displayINRCurrency from "../helper/displayCurrency";
 import { MdDelete } from "react-icons/md";
-import { Link } from "react-router-dom";
 
 function OrderPage(props) {
   const [data, setData] = useState([]);
@@ -86,17 +85,15 @@ function OrderPage(props) {
                   <div className="grid gap-4 p-4 lg:w-2/3">
                     {item.productDetails.map((product, index) => {
                       return (
-                        <Link
-                          to={"/product/" + product._id}
+                        <div
                           key={product.productId + index}
                           className="flex gap-4 bg-blue-50 p-4 rounded-md"
                         >
                           <img
-                            src={
-                              product?.image
-                              ? product.image.replace(/^http:\/\//i, "https://")
-                              : product.productImage?.replace(/^http:\/\//i, "https://")
-                            }
+                            src={product?.image.replace(
+                              /^http:\/\//i,
+                              "https://"
+                            )}
                             alt={product.name}
                             className="w-24 h-32 bg-slate-200 object-scale-down mix-blend-multiply p-2 rounded-md"
                           />
@@ -113,7 +110,7 @@ function OrderPage(props) {
                               </div>
                             </div>
                           </div>
-                        </Link>
+                        </div>
                       );
                     })}
                   </div>
