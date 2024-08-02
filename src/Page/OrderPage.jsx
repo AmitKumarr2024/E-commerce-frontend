@@ -28,14 +28,15 @@ function OrderPage(props) {
         method: PaymentOrderApi.cancelOrder.method,
 
         credentials: "include",
-        headers:{
-          "Content-Type":"application/json"
+        headers: {
+          "Content-Type": "application/json",
         },
-        body:JSON.stringify({
-          orderId:id
-        })
+        body: JSON.stringify({
+          orderId: id,
+        }),
       });
-      if (response.ok) {
+      const dataResponse = await response.json();
+      if (dataResponse.success) {
         fetchOrderDetails(); // Refresh order list after deletion
       } else {
         console.log("Failed to delete order");
