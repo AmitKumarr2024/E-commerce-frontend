@@ -51,6 +51,8 @@ function OrderPage(props) {
       const dataResponse = await response.json();
 
       if (dataResponse.success) {
+        console.log(dataResponse.message);
+        
         fetchOrderDetails(); // Refresh order list after deletion
       } else {
         console.log(
