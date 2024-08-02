@@ -43,12 +43,12 @@ function OrderPage(props) {
                   <div className="grid gap-4 p-4 lg:w-2/3">
                     {item.productDetails.map((product, index) => (
                       <div
-                        key={product.productId + index}
+                        key={product?.productId + index}
                         className="flex gap-4 bg-blue-50 p-4 rounded-md"
                       >
                         <img
-                          src={product.image.replace(/^http:\/\//i, 'https://')}
-                          alt={product.name}
+                          src={product?.image[0].replace(/^http:\/\//i, 'https://')}
+                          alt={product?.name}
                           className="w-24 h-32 bg-slate-200 object-scale-down mix-blend-multiply p-2 rounded-md"
                         />
                         <div className="flex flex-col justify-between">
