@@ -87,7 +87,7 @@ function OrderPage(props) {
                     {item.productDetails.map((product, index) => {
                       return (
                         <Link
-                        to={"product/" + product._id}
+                        to={"/product/" + product._id}
                           key={product.productId + index}
                           className="flex gap-4 bg-blue-50 p-4 rounded-md"
                         >
