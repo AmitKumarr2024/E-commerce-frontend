@@ -97,7 +97,7 @@ function OrderPage(props) {
                     {/* delete button */}
                     <div
                       className="absolute right-2 top-2 p-2 text-2xl text-red-600 rounded-full hover:bg-red-500 hover:text-white cursor-pointer"
-                      onClick={(e) => orderDelete(product.productId)}
+                      onClick={(e) => orderDelete(product?.productId)}
                     >
                       <MdDelete />
                     </div>
