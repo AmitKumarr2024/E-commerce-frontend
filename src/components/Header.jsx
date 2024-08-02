@@ -22,7 +22,6 @@ function Header() {
   const searchQuery = urlSearch.get("q") || "";
   const [search, setSearch] = useState(searchQuery);
 
-  
   useEffect(() => {
     setSearch(searchQuery);
   }, [searchQuery]);
@@ -37,7 +36,7 @@ function Header() {
           "Content-Type": "application/json",
         },
       });
-      
+
       if (!fetchData.ok) {
         const errorData = await fetchData.json();
         toast.error(errorData.message || "Logout request failed");
@@ -47,9 +46,7 @@ function Header() {
       const data = await fetchData.json();
       if (data.success) {
         toast.success(data.message);
-        
         // Update application state
-        
         dispatch(setUserDetails(null));
         navigate("/");
       } else {
@@ -59,7 +56,7 @@ function Header() {
       toast.error("Failed to logout, please try again.");
     }
   };
-  
+
   const handleSearch = (e) => {
     const { value } = e.target;
     setSearch(value);
@@ -69,7 +66,7 @@ function Header() {
       navigate(`/search`);
     }
   };
-  
+
   console.log("userdetails", user);
   return (
     <header className="h-16 shadow-md bg-white fixed w-full z-50">
@@ -78,7 +75,7 @@ function Header() {
           <Link to="/">
             <img
               src={image1}
-              className="w-24 h-14 rounded-2xl mix-blend-multiply animate-pulse transition-all "
+              className="w-24 h-14 rounded-2xl mix-blend-multiply animate-pulse transition-all"
               alt="logo"
             />
           </Link>
@@ -122,12 +119,12 @@ function Header() {
               )}
             </div>
             {profileMenu && (
-              <div className="absolute z-50 bg-white bottom-0 top-11 h-fit p-2 shadow-lg rounded hidden md:block">
+              <div className="absolute z-50 bg-white bottom-0 top-11 h-fit p-2 shadow-lg rounded">
                 <nav className="flex flex-col">
                   {user.role === ROLE.ADMIN && (
                     <Link
                       to="/admin-pannel/all-product"
-                      className="whitespace-nowrap hover:bg-slate-200 p-1"
+                      className="whitespace-nowrap hover:bg-slate-200 p-1 hidden md:block"
                       onClick={() => setProfileMenu((prev) => !prev)}
                     >
                       Admin Pannel
