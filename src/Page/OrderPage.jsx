@@ -22,27 +22,19 @@ function OrderPage(props) {
     }
   };
 
-  const orderDelete = async (productID) => {
+  const orderDelete = async (orderId) => {
     try {
-      const response = await fetch(PaymentOrderApi.cancelOrder.url, {
-        method: PaymentOrderApi.cancelOrder.method,
-        credentials: "include",
+const response = await fetch(`PaymentOrderApi.cancelOrder.url/${orderId}`, { // Include orderId in the URL
+        method: `PaymentOrderApi.cancelOrder.method`,
+        credentials: 'include',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          productId: productID, // Send the productId
-        }),
       });
   
       if (!response.ok) {
         const errorText = await response.text();
-        console.error(
-          "Failed to delete order. Status:",
-          response.status,
-          "Response:",
-          errorText
-        );
+        console.error("Failed to delete order. Status:", response.status, "Response:", errorText);
         return;
       }
   
@@ -50,17 +42,15 @@ function OrderPage(props) {
   
       if (dataResponse.success) {
         console.log(dataResponse.message);
-        fetchOrderDetails(); // Refresh order list after deletion
+        fetchOrderDetails(); // Refresh the order list after deletion
       } else {
-        console.log(
-          "Failed to delete order:",
-          dataResponse.message || "Unknown error"
-        );
+        console.log("Failed to delete order:", dataResponse.message || "Unknown error");
       }
     } catch (error) {
       console.log("Order delete error:", error);
     }
   };
+  
   
   useEffect(() => {
     fetchOrderDetails();
@@ -111,7 +101,7 @@ function OrderPage(props) {
                   {/* Delete button */}
                   <div
                     className="absolute right-2 top-2 p-2 text-2xl text-red-600 rounded-full hover:bg-red-500 hover:text-white cursor-pointer"
-                    onClick={() => orderDelete(item._id)}
+                    onClick={() => orderDelete(item.productDetails.productId)}
                   >
                     <MdDelete />
                   </div>
