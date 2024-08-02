@@ -1,5 +1,8 @@
 const productDomain = import.meta.env.BACKEND_RENDER_API_DOMAIN;
 
+console.log("domain",productDomain);
+
+
 const ProductApi = {
   createProduct: {
     url: `${productDomain}/api/products/create`,
