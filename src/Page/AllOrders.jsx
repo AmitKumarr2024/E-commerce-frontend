@@ -128,7 +128,7 @@ function AllOrders(props) {
                       <img
                         src={product?.image.replace(/^http:\/\//i, "https://")}
                         alt={product.name}
-                        className="w-24 h-32 bg-slate-200 object-cover p-2 rounded-md"
+                        className="w-32 h-40 bg-slate-200 object-cover p-2 rounded-md"
                       />
                       <div className="flex flex-col justify-between">
                         <div className="font-medium text-lg text-gray-800 line-clamp-3">
