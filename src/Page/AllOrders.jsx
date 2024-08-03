@@ -182,7 +182,7 @@ function AllOrders(props) {
                       </div>
                     ))}
                   </div>
-                  <div className="text-lg font-extrabold text-gray-700 mt-4">
+                  <div className="float-end text-lg font-extrabold text-gray-700 mt-4">
                     Total Amount: {displayINRCurrency(item.totalAmount)}
                   </div>
                 </div>
