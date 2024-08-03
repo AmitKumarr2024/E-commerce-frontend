@@ -17,19 +17,24 @@ function AllOrders() {
         method: PaymentOrderApi.allOrder.method,
         credentials: "include",
       });
-
+  
       const dataResponse = await response.json();
-
+  
       if (response.ok) {
         const { orders, users } = dataResponse.data;
         setOrders(orders);
-
-        // Create a map of users by their userId
-        const userMap = {};
-        users.forEach(user => {
-          userMap[user._id] = user;
-        });
-        setUsersMap(userMap);
+  
+        // Ensure users is an array before using .forEach
+        if (Array.isArray(users)) {
+          // Create a map of users by their userId
+          const userMap = {};
+          users.forEach(user => {
+            userMap[user._id] = user;
+          });
+          setUsersMap(userMap);
+        } else {
+          console.error("Expected users to be an array");
+        }
       } else {
         console.error("Error fetching orders:", dataResponse.message);
       }
