@@ -86,6 +86,7 @@ function AllOrders() {
     ) : (
       orders.map((item) => (
         <div key={item._id} className="space-y-4 bg-white p-6 my-6 rounded-lg shadow-md  ">
+          <p>Total Result : {item.length}</p>
           <div className="text-center border-2 rounded-md mb-4 py-1 flex flex-col md:flex-col items-center justify-evenly shadow-lg animated-border">
             <h2 className="w-auto transition-all text-xl  font-semibold animate-backgroundAnimation text-white px-4 rounded-2xl shadow-md mb-9 md:mb-0 mx-auto">
               User Details

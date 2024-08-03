@@ -69,16 +69,16 @@ function Header() {
 
   console.log("userdetails", user);
   return (
-    <header className="h-16 shadow-md bg-white fixed w-full z-50">
+    <header className="h-20 shadow-md bg-white fixed w-full z-50">
       <div className="h-full container mx-auto flex items-center px-4 lg:px-14 justify-between">
         <div className="flex items-center space-x-2">
           <Link to="/" className="flex items-center space-x-2">
             <img
               src={image1}
-              className="w-12 lg:w-16 rounded-xl mix-blend-multiply animated-border transition-all"
+              className="w-12 lg:w-16 rounded-xl mix-blend-multiply border-4 animated-border transition-all"
               alt="logo"
             />
-            <p className="text-xs font-light italic text-gray-600">
+            <p className="text-lg font-semibold italic text-gray-600">
               E-commerce MarketPlace
             </p>
           </Link>
