@@ -6,6 +6,7 @@ import { MdDelete } from "react-icons/md";
 
 function AllOrders(props) {
   const [data, setData] = useState([]);
+  const [user, setUser] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [cancelReason, setCancelReason] = useState("");
   const [currentProductId, setCurrentProductId] = useState(null);
@@ -22,8 +23,7 @@ function AllOrders(props) {
       if (response.ok) {
         const { orders, user } = dataResponce.data;
         setData(orders);
-        console.log("Order List:", orders);
-        console.log("User Details:", user);
+        setUser(user);
       } else {
         console.error("Error fetching orders:", dataResponse.message);
       }
@@ -91,8 +91,16 @@ function AllOrders(props) {
             <p className="font-medium text-lg text-gray-800">
               {moment(item.createdAt).format("LL")}
             </p>
-
-
+            {/* add user name here */}
+            {user.map((pl, index) => {
+              return (
+                <div key={"user"+index}>
+                  <p>{pl.name}</p>
+                  <p>{pl.role}</p>
+                  <p>{pl.email}</p>
+                </div>
+              );
+            })}
             <div className="border rounded-lg shadow-sm overflow-hidden">
               <div className="lg:flex">
                 <div className="grid gap-4 p-4 lg:w-2/3">
