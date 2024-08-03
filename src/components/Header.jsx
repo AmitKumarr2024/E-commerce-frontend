@@ -75,10 +75,10 @@ function Header() {
           <Link to="/">
             <img
               src={image1}
-              className="w-16 lg:w-16  rounded-2xl mix-blend-multiply animate-pulse transition-all"
+              className="w-14 lg:w-14  rounded-xl mix-blend-multiply animate-pulse transition-all"
               alt="logo"
             />
-            <p className=" absolute bottom-3  text-xs font-extralight italic">E-commerceMarketPlace</p>
+            <p className=" absolute bottom-1  text-xs font-extralight italic">E-commerceMarketPlace</p>
           </Link>
         </div>
         <div className="hidden lg:flex pl-3 items-center w-full max-w-sm justify-evenly border rounded-full focus-within:shadow">
