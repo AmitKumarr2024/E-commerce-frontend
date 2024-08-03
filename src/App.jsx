@@ -76,7 +76,7 @@ function App(props) {
         value={{ fetchUserDetails, cartProductCount, fetchUserAddToCart }}
       >
         <Header />
-        <main className="min-h-[calc(100vh-100px)] pt-16">
+        <main className="min-h-[calc(100vh-100px)] pt-20">
           <Outlet />
         </main>
         <Footer />
