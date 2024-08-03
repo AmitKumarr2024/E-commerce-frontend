@@ -120,7 +120,7 @@ function AllOrders() {
                       className="w-32 h-24 bg-slate-200 object-scale-down mix-blend-multiply p-2 rounded-md"
                     />
                     <div className="flex flex-col justify-between">
-                      <div className="font-medium text-lg text-gray-800 line-clamp-3">
+                      <div className="font-medium text-lg text-gray-800 line-clamp-1">
                         {product.name}
                       </div>
                       <div className="flex items-center gap-5 mt-2">
