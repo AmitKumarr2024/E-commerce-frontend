@@ -6,7 +6,7 @@ import { MdDelete } from "react-icons/md";
 
 function AllOrders(props) {
   const [data, setData] = useState([]);
-  const [user, setUser] = useState(null); // Updated to null, since it's a single object
+  const [user, setUser] = useState(null); // Initialize as null since it's a single object
   const [showModal, setShowModal] = useState(false);
   const [cancelReason, setCancelReason] = useState("");
   const [currentProductId, setCurrentProductId] = useState(null);
@@ -83,7 +83,7 @@ function AllOrders(props) {
   return (
     <div className="container mx-auto p-4">
       {data.length === 0 && (
-        <p className="text-center text-gray-500">No Order available</p>
+        <p className="text-center text-gray-500">No orders available</p>
       )}
       {user && (
         <div className="text-center text-gray-600 mb-4">
