@@ -10,12 +10,11 @@ function OrderPage(props) {
   const [showModal, setShowModal] = useState(false);
   const [cancelReason, setCancelReason] = useState('');
   const [currentProductId, setCurrentProductId] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
 
   const fetchOrderDetails = async () => {
     try {
-      setLoading(true)
       const response = await fetch(PaymentOrderApi.getOrder.url, {
         method: PaymentOrderApi.getOrder.method,
         credentials: "include",
