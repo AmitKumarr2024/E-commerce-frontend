@@ -4,9 +4,9 @@ import moment from "moment";
 import displayINRCurrency from "../helper/displayCurrency";
 import { MdDelete } from "react-icons/md";
 
-function AllOrders(props) {
+function AllOrders() {
   const [data, setData] = useState([]);
-  const [user, setUser] = useState(null); // Initialize as null since it's a single object
+  const [user, setUser] = useState(null); // Single user object
   const [showModal, setShowModal] = useState(false);
   const [cancelReason, setCancelReason] = useState("");
   const [currentProductId, setCurrentProductId] = useState(null);
@@ -23,7 +23,7 @@ function AllOrders(props) {
       if (response.ok) {
         const { orders, user } = dataResponse.data;
         setData(orders);
-        setUser(user);
+        setUser(user); // Assuming user is a single object
       } else {
         console.error("Error fetching orders:", dataResponse.message);
       }
@@ -86,31 +86,29 @@ function AllOrders(props) {
         <p className="text-center text-gray-500">No orders available</p>
       )}
       <div className="space-y-6 border p-9 rounded-lg shadow-lg overflow-hidden bg-gray-100">
-        {user.map((users, index) => {
-          return (
-            <div className="text-center border-2  rounded-md  mb-4 py-1 flex flex-col md:flex-row items-center justify-evenly shadow-lg animated-border">
-              <h2 className="w-auto transition-all text-xl font-semibold animate-backgroundAnimation text-white px-4 rounded-2xl shadow-md mb-4 md:mb-0 mx-auto">
-                User Details
-              </h2>
-              <div className="mt-4 md:mt-0 flex flex-col md:flex-row justify-evenly w-full items-center space-y-2 md:space-y-0 md:space-x-4">
-                <p className="text-lg font-bold mb-2 md:mb-0">
-                  Name: <span className="font-medium">{users.name}</span>
-                </p>
-                <p className="text-lg font-bold mb-2 md:mb-0">
-                  Role: <span className="font-medium">{users.role}</span>
-                </p>
-                <p className="text-lg font-bold">
-                  Email: <span className="font-medium">{users.email}</span>
-                </p>
-              </div>
+        {user && (
+          <div className="text-center border-2 rounded-md mb-4 py-1 flex flex-col md:flex-row items-center justify-evenly shadow-lg animated-border">
+            <h2 className="w-auto transition-all text-xl font-semibold animate-backgroundAnimation text-white px-4 rounded-2xl shadow-md mb-4 md:mb-0 mx-auto">
+              User Details
+            </h2>
+            <div className="mt-4 md:mt-0 flex flex-col md:flex-row justify-evenly w-full items-center space-y-2 md:space-y-0 md:space-x-4">
+              <p className="text-lg font-bold mb-2 md:mb-0">
+                Name: <span className="font-medium">{user.name}</span>
+              </p>
+              <p className="text-lg font-bold mb-2 md:mb-0">
+                Role: <span className="font-medium">{user.role}</span>
+              </p>
+              <p className="text-lg font-bold">
+                Email: <span className="font-medium">{user.email}</span>
+              </p>
             </div>
-          );
-        })}
+          </div>
+        )}
 
         {data.map((item) => (
           <div
             key={item._id}
-            className="space-y-4 bg-white p-6 rounded-lg shadow-md"
+            className="space-y-4 bg-white p-6 rounded-lg shadow-md mb-6"
           >
             <div className="relative border rounded-lg bg-gray-50 p-4">
               <p className="absolute top-1 mb-4 left-3 font-medium text-xs text-gray-400">
@@ -184,7 +182,8 @@ function AllOrders(props) {
                   </div>
                   <div className="float-end text-lg font-extrabold text-gray-700 mt-4">
                     Total Amount: {displayINRCurrency(item.totalAmount)}
-                  </div>
+                  </div>{" "}
+                  {/* <-- Missing closing div added here */}
                 </div>
               </div>
             </div>
