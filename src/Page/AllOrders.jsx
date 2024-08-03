@@ -85,7 +85,7 @@ function AllOrders(props) {
       {data.length === 0 && (
         <p className="text-center text-gray-500">No orders available</p>
       )}
-      <div className="space-y-6 border rounded-lg shadow-lg overflow-hidden">
+      <div className="space-y-6 border  rounded-lg shadow-lg overflow-hidden">
         {user && (
           <div className="text-center text-gray-600 mb-4 flex flex-col md:flex-row items-center justify-between p-8">
             <h2 className="text-xl font-semibold">User Details</h2>
@@ -95,11 +95,11 @@ function AllOrders(props) {
           </div>
         )}
         {data.map((item) => (
-          <div key={item._id} className="space-y-4">
-            <p className="font-medium text-base text-gray-500">
-              Created At: <span className="text-sm text-gray-700">{moment(item.createdAt).format("LLLL")}</span>
+          <div key={item._id} className="space-y-1">
+            <div className="border rounded-lg shadow-lg overflow-hidden bg-slate-50">
+            <p className="font-medium text-xs text-gray-600">
+              Created At: <span className="text-xs text-gray-700">{moment(item.createdAt).format("LLLL")}</span>
             </p>
-            <div className="border rounded-lg shadow-lg overflow-hidden">
               <div className="lg:flex">
                 <div className="grid gap-4 p-4 lg:w-2/3">
                   {item.productDetails.map((product) => (
