@@ -90,7 +90,7 @@ function AllOrders() {
             <h2 className="w-auto transition-all text-xl font-semibold animate-backgroundAnimation text-white px-4 rounded-2xl shadow-md mb-4 md:mb-0 mx-auto">
               User Details
             </h2>
-            <div className="mt-4 md:mt-0 flex flex-row  justify-evenly w-full h-full items-center space-y-2 md:space-y-0 md:space-x-4">
+            <div className="mt-4 md:mt-0 flex flex-col md:flex-row justify-evenly w-full items-center space-y-2 md:space-y-0 md:space-x-4">
               <p className="text-lg font-bold mb-2 md:mb-0">
                 Name: <span className="font-medium">{item.userId.name}</span>
               </p>
@@ -110,8 +110,8 @@ function AllOrders() {
                 {moment(item.createdAt).format("LLLL")}
               </span>
             </p>
-            <div className="lg:flex h-full">
-              <div className="grid gap-4 p-4 lg:w-2/3 h-full">
+            <div className="lg:flex">
+              <div className="grid gap-4 p-4 lg:w-2/3">
                 {item.productDetails.map((product) => (
                   <div key={product.productId} className="flex gap-4 p-4 bg-white border rounded-md shadow-sm">
                     <img
@@ -135,7 +135,7 @@ function AllOrders() {
                   </div>
                 ))}
               </div>
-              <div className="flex flex-col p-4 lg:w-1/3 h-full bg-green-50 space-y-4 relative rounded-lg shadow-sm">
+              <div className="flex flex-col justify-between p-4 lg:w-1/3 h-full bg-green-50 space-y-4 relative rounded-lg shadow-sm">
                 <div
                   className="absolute right-2 top-2 p-2 text-2xl text-red-600 rounded-full hover:bg-red-500 hover:text-white cursor-pointer transition-colors duration-300"
                   onClick={() => handleDeleteClick(item.productDetails[0].productId)}
@@ -203,6 +203,7 @@ function AllOrders() {
       </div>
     )}
   </div>
+  
   
   );
 }
