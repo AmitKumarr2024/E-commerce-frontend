@@ -23,6 +23,11 @@ function AllOrders() {
       if (response.ok) {
         const { orders, users } = dataResponse.data;
   
+        // Log API response for debugging
+        console.log("API Response:", dataResponse);
+        console.log("Users data:", users);
+
+        // Check if `users` is an array and map it to usersMap
         if (Array.isArray(users)) {
           const userMap = {};
           users.forEach(user => {
@@ -32,7 +37,6 @@ function AllOrders() {
           setUsersMap(userMap);
         } else {
           console.error("Expected users to be an array but got:", users);
-          // Handle cases where `users` is not an array or is missing
           setUsersMap({});
         }
       } else {
@@ -42,8 +46,6 @@ function AllOrders() {
       console.error("Error fetching orders:", error);
     }
   };
-  
-  
 
   const handleDeleteClick = (productId) => {
     setCurrentProductId(productId);
@@ -99,8 +101,7 @@ function AllOrders() {
         <p className="text-center text-gray-500">No orders available</p>
       ) : (
         orders.map((item) => {
-          // Get user details based on the userId from the order
-          const user = usersMap[item.userId];
+          const user = usersMap[item.userId]; // Get user details based on userId
 
           return (
             <div
