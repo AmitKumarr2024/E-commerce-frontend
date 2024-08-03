@@ -1,6 +1,5 @@
-const productDomain = import.meta.env.BACKEND_RENDER_API_DOMAIN;
+const productDomain = import.meta.env.VITE_BACKEND_RENDER_API_DOMAINS;
 
-console.log("domain typesss",productDomain);
 
 
 const ProductApi = {

@@ -1,4 +1,4 @@
-const backendDomain = import.meta.env.BACKEND_RENDER_API_DOMAIN;
+const backendDomain = import.meta.env.VITE_BACKEND_RENDER_API_DOMAINS;
 
 const SummaryApi = {
   signUp: {
