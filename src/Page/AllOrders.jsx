@@ -81,7 +81,7 @@ function AllOrders() {
 
   return (
     <div className="container mx-auto p-4 h-[calc(125vh-100px)] overflow-y-scroll hide-scrollbar">
-      <p>Total Result : {orders.length}</p>
+      <p className="text-lg font-semibold text-gray-400">Total Result : {orders.length}</p>
       {orders.length === 0 ? (
         <p className="text-center text-gray-500">No orders available</p>
       ) : (
@@ -111,7 +111,7 @@ function AllOrders() {
             <div className="relative border rounded-lg bg-gray-50 p-4">
               <p className="absolute top-1 mb-4 left-3 font-medium text-sm text-gray-400">
                 Created At:{" "}
-                <span className="text-base font-semibold text-blue-700">
+                <span className="text-sm font-semibold text-blue-600">
                   {moment(item.createdAt).format("LLLL")}
                 </span>
               </p>
