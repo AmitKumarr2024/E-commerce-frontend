@@ -1,4 +1,4 @@
-const productDomain = import.meta.env.VITE_BACKEND_RENDER_API_DOMAINS;
+const productDomain ="https://e-commerce-backend-tkle.onrender.com";
 
 
 

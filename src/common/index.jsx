@@ -1,4 +1,4 @@
-const backendDomain = import.meta.env.VITE_BACKEND_RENDER_API_DOMAINS;
+const backendDomain ="https://e-commerce-backend-tkle.onrender.com";
 
 const SummaryApi = {
   signUp: {

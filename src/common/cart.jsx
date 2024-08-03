@@ -1,4 +1,4 @@
-const cartDomain =  import.meta.env.VITE_BACKEND_RENDER_API_DOMAINS;
+const cartDomain ="https://e-commerce-backend-tkle.onrender.com";
 
 const CartApi = {
   addtoCart: {
