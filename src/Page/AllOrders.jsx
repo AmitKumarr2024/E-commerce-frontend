@@ -90,7 +90,7 @@ function AllOrders() {
             <h2 className="w-auto transition-all text-xl font-semibold animate-backgroundAnimation text-white px-4 rounded-2xl shadow-md mb-4 md:mb-0 mx-auto">
               User Details
             </h2>
-            <div className="mt-4 md:mt-0 flex flex-col md:flex-row justify-evenly w-full items-center space-y-2 md:space-y-0 md:space-x-4">
+            <div className="mt-4 md:mt-0 flex flex-row  justify-evenly w-full h-full items-center space-y-2 md:space-y-0 md:space-x-4">
               <p className="text-lg font-bold mb-2 md:mb-0">
                 Name: <span className="font-medium">{item.userId.name}</span>
               </p>
