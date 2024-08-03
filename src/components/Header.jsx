@@ -78,7 +78,7 @@ function Header() {
               className="w-12 lg:w-16 rounded-xl mix-blend-multiply border-4 animated-border transition-all"
               alt="logo"
             />
-            <p className="text-lg font-semibold italic text-gray-600">
+            <p className="text-lg font-semibold italic animated-text-outline text-gray-600">
               E-commerce MarketPlace
             </p>
           </Link>
