@@ -1,6 +1,4 @@
-const productDomain ="https://e-commerce-backend-tkle.onrender.com";
-
-
+const productDomain = import.meta.env.VITE_REACT_APP_BACKEND_DOMAIN;
 
 const ProductApi = {
   createProduct: {

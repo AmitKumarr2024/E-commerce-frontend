@@ -1,4 +1,4 @@
-const domain ="https://e-commerce-backend-tkle.onrender.com";
+const domain = import.meta.env.VITE_REACT_APP_BACKEND_DOMAIN;
 
 const PaymentOrderApi = {
   payment: {
