@@ -135,7 +135,7 @@ function AllOrders() {
                   </div>
                 ))}
               </div>
-              <div className="flex flex-col justify-evenly p-4 lg:w-1/3 min-h-[calc(100vh-200px)] bg-green-50 space-y-4 relative rounded-lg shadow-sm">
+              <div className="flex flex-col justify-between p-4 lg:w-1/3 min-h-[calc(100vh-200px)] bg-green-50 space-y-4 relative rounded-lg shadow-sm">
                 <div
                   className="absolute right-2 top-2 p-2 text-2xl text-red-600 rounded-full hover:bg-red-500 hover:text-white cursor-pointer transition-colors duration-300"
                   onClick={() => handleDeleteClick(item.productDetails[0].productId)}
@@ -152,7 +152,7 @@ function AllOrders() {
                   <div className="text-gray-600">
                     Payment Status: {item.paymentDetails.payment_status}
                   </div>
-                </div>
+                
                 <div>
                   <div className="text-lg font-medium text-gray-800 mb-2">
                     Shipping Details
@@ -162,6 +162,7 @@ function AllOrders() {
                       Shipping Amount: {shipping.shipping_amount}
                     </div>
                   ))}
+                </div>
                 </div>
                 <div className="border-t border-gray-300 mt-4 pt-4">
                   <div className="text-lg font-extrabold text-gray-700 text-right">
