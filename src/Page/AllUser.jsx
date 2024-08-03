@@ -53,26 +53,30 @@ function AllUser(props) {
 
   return (
     <>
-      <h1 className="text-3xl mb-7 font-bold uppercase text-center">All Users</h1>
+    <h1 className="text-3xl mb-7 font-bold uppercase text-center">All Users</h1>
 <div className="bg-white pb-5 rounded-lg shadow-md overflow-x-auto">
   <table className="w-full bg-white border-collapse">
     {/* Total Users Header */}
     <thead className="bg-gray-100">
       <tr className="border-b border-gray-200">
-        <th colSpan="2" className="p-1 text-left text-gray-700 font-semibold">Total Users</th>
-        <th colSpan="1" className="p-1 text-red-800 font-bold text-lg">{allUser.length}</th>
+        <th className="p-4 text-left text-gray-700 font-semibold" colSpan="6">
+          Total Users
+        </th>
+        <th className="p-4 text-red-800 font-bold text-lg" colSpan="1">
+          {allUser.length}
+        </th>
       </tr>
     </thead>
 
     {/* Main Table Header */}
     <thead className="bg-orange-100 border-b border-gray-200">
       <tr>
-        <th className="p-1 text-left text-gray-600 font-semibold">No.</th>
-        <th className="p-1 text-left text-gray-600 font-semibold">Name</th>
-        <th className="p-1 text-left text-gray-600 font-semibold">Email</th>
-        <th className="p-1 text-left text-gray-600 font-semibold">Role</th>
-        <th className="p-1 text-left text-gray-600 font-semibold">Created</th>
-        <th className="p-1 text-left text-gray-600 font-semibold">Action</th>
+        <th className="p-4 text-center text-gray-600 font-semibold">No.</th>
+        <th className="p-4 text-center text-gray-600 font-semibold">Name</th>
+        <th className="p-4 text-center text-gray-600 font-semibold">Email</th>
+        <th className="p-4 text-center text-gray-600 font-semibold">Role</th>
+        <th className="p-4 text-center text-gray-600 font-semibold">Created</th>
+        <th className="p-4 text-center text-gray-600 font-semibold">Action</th>
       </tr>
     </thead>
 
@@ -80,12 +84,12 @@ function AllUser(props) {
     <tbody>
       {allUser.map((user, index) => (
         <tr key={user._id} className="border-b border-gray-200 hover:bg-gray-50">
-          <td className="p-1 text-gray-700">{index + 1}</td>
-          <td className="p-1 text-gray-700">{user.name}</td>
-          <td className="p-1 text-gray-700">{user.email}</td>
-          <td className="p-1 text-gray-700">{user.role}</td>
-          <td className="p-1 text-gray-700">{moment(user.createdAt).format("LLL")}</td>
-          <td className="p-1 text-center">
+          <td className="p-4 text-center text-gray-700">{index + 1}</td>
+          <td className="p-4 text-center text-gray-700">{user.name}</td>
+          <td className="p-4 text-center text-gray-700">{user.email}</td>
+          <td className="p-4 text-center text-gray-700">{user.role}</td>
+          <td className="p-4 text-center text-gray-700">{moment(user.createdAt).format("LLL")}</td>
+          <td className="p-4 text-center">
             <button
               className="p-2 bg-green-200 hover:bg-green-500 hover:text-white transition-colors ease-in-out text-xl rounded-full"
               onClick={() => {
