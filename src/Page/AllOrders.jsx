@@ -80,7 +80,7 @@ function AllOrders() {
   }, []);
 
   return (
-    <div className="container mx-auto p-4 h-[calc(125vh-100px)] overflow-y-scroll">
+    <div className="container mx-auto p-4 h-[calc(125vh-100px)] overflow-y-scroll hide-scrollbar">
     {orders.length === 0 ? (
       <p className="text-center text-gray-500">No orders available</p>
     ) : (

@@ -14,7 +14,7 @@ function AdminPannel(props) {
   }, []);
   return (
     <>
-      <div className="min-h-[calc(100vh-100px)] md:flex hidden">
+      <div className="min-h-[calc(100vh-200px)] md:flex hidden">
         <aside className="bg-white min-h-full min-w-[20%] customeShadow">
           <div className="h-40 flex justify-center items-center flex-col mt-5">
             <div className="text-6xl cursor-pointer relative flex justify-center">
