@@ -14,7 +14,7 @@ const PaymentOrderApi = {
     method: "post",
   },
   allOrder: {
-    url: `${domain}/api/payment/allorder`,
+    url: `${domain}/api/payment/all-order`,
     method: "get",
   },
 };
