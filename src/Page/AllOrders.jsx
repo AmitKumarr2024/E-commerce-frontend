@@ -82,25 +82,6 @@ function AllOrders() {
 
   return (
     <div className="container mx-auto p-4">
-      {user && (
-        <div className="text-center border-2 rounded-md mb-4 py-1 flex flex-col md:flex-row items-center justify-evenly shadow-lg animated-border">
-          <h2 className="w-auto transition-all text-xl font-semibold animate-backgroundAnimation text-white px-4 rounded-2xl shadow-md mb-4 md:mb-0 mx-auto">
-            User Details
-          </h2>
-          <div className="mt-4 md:mt-0 flex flex-col md:flex-row justify-evenly w-full items-center space-y-2 md:space-y-0 md:space-x-4">
-            <p className="text-lg font-bold mb-2 md:mb-0">
-              Name: <span className="font-medium">{user.name}</span>
-            </p>
-            <p className="text-lg font-bold mb-2 md:mb-0">
-              Role: <span className="font-medium">{user.role}</span>
-            </p>
-            <p className="text-lg font-bold">
-              Email: <span className="font-medium">{user.email}</span>
-            </p>
-          </div>
-        </div>
-      )}
-
       {orders.length === 0 ? (
         <p className="text-center text-gray-500">No orders available</p>
       ) : (
@@ -109,6 +90,27 @@ function AllOrders() {
             key={item._id}
             className="space-y-4 bg-white p-6 rounded-lg shadow-md"
           >
+            {user.map((users, index) => {
+              return (
+                <div key={index} className="text-center border-2 rounded-md mb-4 py-1 flex flex-col md:flex-row items-center justify-evenly shadow-lg animated-border">
+                  <h2 className="w-auto transition-all text-xl font-semibold animate-backgroundAnimation text-white px-4 rounded-2xl shadow-md mb-4 md:mb-0 mx-auto">
+                    User Details
+                  </h2>
+                  <div className="mt-4 md:mt-0 flex flex-col md:flex-row justify-evenly w-full items-center space-y-2 md:space-y-0 md:space-x-4">
+                    <p className="text-lg font-bold mb-2 md:mb-0">
+                      Name: <span className="font-medium">{users.name}</span>
+                    </p>
+                    <p className="text-lg font-bold mb-2 md:mb-0">
+                      Role: <span className="font-medium">{users.role}</span>
+                    </p>
+                    <p className="text-lg font-bold">
+                      Email: <span className="font-medium">{users.email}</span>
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+
             <div className="relative border rounded-lg bg-gray-50 p-4">
               <p className="absolute top-1 mb-4 left-3 font-medium text-xs text-gray-400">
                 Created At:{" "}
