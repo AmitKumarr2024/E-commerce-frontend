@@ -3,12 +3,15 @@ import PaymentOrderApi from "../common/order";
 import moment from "moment";
 import displayINRCurrency from "../helper/displayCurrency";
 import { MdDelete } from "react-icons/md";
+import ColorfulSpinner from "../components/ColorfulSpinner";
 
 function OrderPage(props) {
   const [data, setData] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [cancelReason, setCancelReason] = useState('');
   const [currentProductId, setCurrentProductId] = useState(null);
+  const [loading, setLoading] = useState(true);
+
 
   const fetchOrderDetails = async () => {
     try {
@@ -83,6 +86,10 @@ function OrderPage(props) {
   useEffect(() => {
     fetchOrderDetails();
   }, []);
+
+  if (loading) {
+    return <ColorfulSpinner loading={loading} />;
+  }
 
   return (
     <div className="container mx-auto p-4">
