@@ -105,7 +105,7 @@ function AllOrders(props) {
                   {item.productDetails.map((product) => (
                     <div
                       key={product.productId}
-                      className="flex gap-4 bg-blue-100 p-4 rounded-md"
+                      className="flex gap-4 bg-white p-4 rounded-md"
                     >
                       <img
                         src={product?.image.replace(/^http:\/\//i, "https://")}
@@ -128,7 +128,7 @@ function AllOrders(props) {
                     </div>
                   ))}
                 </div>
-                <div className="p-4 lg:w-1/3 bg-gray-100 space-y-4 relative">
+                <div className="p-4 lg:w-1/3 bg-gray-50 space-y-4 relative">
                   {/* Delete button */}
                   <div
                     className="absolute right-2 top-2 p-2 text-2xl text-red-600 rounded-full hover:bg-red-500 hover:text-white cursor-pointer"
