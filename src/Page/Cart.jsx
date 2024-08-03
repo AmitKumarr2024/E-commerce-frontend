@@ -131,7 +131,7 @@ function Cart(props) {
 
   const handlePayment = async () => {
     try {
-      console.log("Stripe Public Keys:", import.meta.env.VITE_STRIPE_PUBLIC_KEY);
+      console.log("Stripe Public Keyss:", import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
       const stripePromise = await loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
       const response = await fetch(PaymentOrderApi.payment.url, {
