@@ -86,27 +86,26 @@ function AllOrders(props) {
         <p className="text-center text-gray-500">No orders available</p>
       )}
       <div className="space-y-6 border p-9 rounded-lg shadow-lg overflow-hidden bg-gray-100">
-        {user && (
-          <div className="text-center border-2  rounded-md  mb-4 py-1 flex flex-col md:flex-row items-center justify-evenly shadow-lg animated-border">
-          <h2 className="w-auto transition-all text-xl font-semibold animate-backgroundAnimation text-white px-4 rounded-2xl shadow-md mb-4 md:mb-0 mx-auto">
-            User Details
-          </h2>
-          <div className="mt-4 md:mt-0 flex flex-col md:flex-row justify-evenly w-full items-center space-y-2 md:space-y-0 md:space-x-4">
-            <p className="text-lg font-bold mb-2 md:mb-0">
-              Name: <span className="font-medium">{user.name}</span>
-            </p>
-            <p className="text-lg font-bold mb-2 md:mb-0">
-              Role: <span className="font-medium">{user.role}</span>
-            </p>
-            <p className="text-lg font-bold">
-              Email: <span className="font-medium">{user.email}</span>
-            </p>
-          </div>
-        </div>
-        
-        
-        
-        )}
+        {user.map((users, index) => {
+          return (
+            <div className="text-center border-2  rounded-md  mb-4 py-1 flex flex-col md:flex-row items-center justify-evenly shadow-lg animated-border">
+              <h2 className="w-auto transition-all text-xl font-semibold animate-backgroundAnimation text-white px-4 rounded-2xl shadow-md mb-4 md:mb-0 mx-auto">
+                User Details
+              </h2>
+              <div className="mt-4 md:mt-0 flex flex-col md:flex-row justify-evenly w-full items-center space-y-2 md:space-y-0 md:space-x-4">
+                <p className="text-lg font-bold mb-2 md:mb-0">
+                  Name: <span className="font-medium">{users.name}</span>
+                </p>
+                <p className="text-lg font-bold mb-2 md:mb-0">
+                  Role: <span className="font-medium">{users.role}</span>
+                </p>
+                <p className="text-lg font-bold">
+                  Email: <span className="font-medium">{users.email}</span>
+                </p>
+              </div>
+            </div>
+          );
+        })}
 
         {data.map((item) => (
           <div
@@ -130,7 +129,7 @@ function AllOrders(props) {
                       <img
                         src={product?.image.replace(/^http:\/\//i, "https://")}
                         alt={product.name}
-                        className="w-32 h-40 bg-slate-200 object-cover p-2 rounded-md"
+                        className="w-32 h-28 bg-slate-200 object-cover p-2 rounded-md"
                       />
                       <div className="flex flex-col justify-between">
                         <div className="font-medium text-lg text-gray-800 line-clamp-3">
