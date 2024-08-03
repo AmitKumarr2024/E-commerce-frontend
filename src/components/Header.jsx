@@ -79,7 +79,7 @@ function Header() {
               alt="logo"
             />
             <p className="text-lg font-semibold italic animated-text-outline text-gray-600">
-              E-commerce MarketPlace
+              E-CommerceMarkets
             </p>
           </Link>
         </div>
