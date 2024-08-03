@@ -87,15 +87,15 @@ function AllOrders(props) {
       )}
       <div className="space-y-6 border p-9 rounded-lg shadow-lg overflow-hidden bg-gray-100">
         {user && (
-          <div className="text-center border-4 border-blue-600 rounded-lg text-gray-800 mb-4 py-2 flex flex-row items-center justify-evenly shadow-lg animated-border">
-          <h2 className="w-24 transition-all text-xl font-semibold animate-backgroundAnimation text-white px-32 rounded-full shadow-md">
+          <div className="text-center border-4 border-blue-600 rounded-lg text-gray-800 mb-4 py-2 flex flex-col md:flex-row items-center justify-evenly shadow-lg animated-border">
+          <h2 className="w-24 transition-all text-xl font-semibold animate-backgroundAnimation text-white px-32 rounded-full shadow-md mb-4 md:mb-0">
             User Details
           </h2>
-          <div className="mt-4 md:mt-0 flex flex-row justify-evenly w-full items-center ">
-            <p className="text-lg font-bold mb-2">
+          <div className="mt-4 md:mt-0 flex flex-col md:flex-row justify-evenly w-full items-center space-y-2 md:space-y-0 md:space-x-4">
+            <p className="text-lg font-bold mb-2 md:mb-0">
               Name: <span className="font-medium">{user.name}</span>
             </p>
-            <p className="text-lg font-bold mb-2">
+            <p className="text-lg font-bold mb-2 md:mb-0">
               Role: <span className="font-medium">{user.role}</span>
             </p>
             <p className="text-lg font-bold">
@@ -103,6 +103,7 @@ function AllOrders(props) {
             </p>
           </div>
         </div>
+        
         
         )}
 
