@@ -113,7 +113,7 @@ function AllOrders(props) {
             key={item._id}
             className="space-y-4 bg-white p-6 rounded-lg shadow-md"
           >
-            <div className="relative border rounded-lg bg-gray-50 p-4">
+            <div className="relative border rounded-lg bg-gray-50 p-1">
               <p className="absolute top-2 left-3 font-medium text-xs text-gray-400">
                 Created At:{" "}
                 <span className="text-xs text-gray-600">
