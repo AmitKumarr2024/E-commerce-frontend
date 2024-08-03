@@ -96,7 +96,7 @@ function AllOrders(props) {
         )}
         {data.map((item) => (
           <div key={item._id} className="space-y-1">
-            <div className="relative border rounded-lg shadow-lg overflow-hidden bg-slate-200">
+            <div className="relative border rounded-lg shadow-lg overflow-hidden bg-white">
               <div className="lg:flex">
                 <div className="grid gap-4 p-4 lg:w-2/3">
             <p className="absolute top-2 left-3 font-medium text-xs text-gray-600">
@@ -105,7 +105,7 @@ function AllOrders(props) {
                   {item.productDetails.map((product) => (
                     <div
                       key={product.productId}
-                      className="flex gap-4 bg-white p-4 rounded-md"
+                      className="flex gap-4  p-4 rounded-md"
                     >
                       <img
                         src={product?.image.replace(/^http:\/\//i, "https://")}
