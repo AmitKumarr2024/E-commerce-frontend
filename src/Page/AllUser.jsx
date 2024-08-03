@@ -58,6 +58,12 @@ function AllUser(props) {
       </h1>
       <div className="bg-white pb-5 rounded-lg">
         <table className="w-full userTable">
+        <thead>
+            <tr>
+              <th>Total user</th>
+              <th className="text-red-800">{allUser.length}</th>
+            </tr>
+          </thead>
           <thead className="bg-orange-100">
             <tr>
               <th>No.</th>
@@ -89,7 +95,10 @@ function AllUser(props) {
                 </td>
               </tr>
             ))}
+
           </tbody>
+         
+
         </table>
       </div>
       {openUpdateUser && (
