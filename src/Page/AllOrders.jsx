@@ -88,7 +88,7 @@ function AllOrders(props) {
       <div className="space-y-6 border p-9 rounded-lg shadow-lg overflow-hidden bg-gray-100">
         {user && (
           <div className="text-center border-4 border-blue-600 rounded-lg text-gray-800 mb-4 py-2 flex flex-row items-center justify-evenly shadow-lg animated-border">
-          <h2 className=" transition-all text-xl font-semibold animate-backgroundAnimation text-white py-1 px-44 rounded-full shadow-md">
+          <h2 className=" transition-all text-xl font-semibold animate-backgroundAnimation text-white px-44 rounded-full shadow-md">
             User Details
           </h2>
           <div className="mt-4 md:mt-0 flex flex-row justify-around w-full items-center ">
@@ -135,7 +135,7 @@ function AllOrders(props) {
                           {product.name}
                         </div>
                         <div className="flex items-center gap-5 mt-2">
-                          <div className="text-lg text-green-600 font-semibold">
+                          <div className="text-lg text-green-600 font-bold">
                             {displayINRCurrency(product.price)}
                           </div>
                           <div className="text-gray-600">
