@@ -16,7 +16,7 @@ function AllOrders(props) {
         method: PaymentOrderApi.allOrder.method,
         credentials: "include",
       });
-      const { orders, user } = dataResponse.data;
+      const { orders, user } = await response.json();
       
       if (response.ok) {
         setData(orders);
