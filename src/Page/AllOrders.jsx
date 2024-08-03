@@ -125,7 +125,7 @@ function AllOrders(props) {
                   {item.productDetails.map((product) => (
                     <div
                       key={product.productId}
-                      className="flex gap-4 p-4 bg-white border rounded-md shadow-sm"
+                      className="flex gap-4 px-8 bg-white border rounded-md shadow-sm"
                     >
                       <img
                         src={product?.image.replace(/^http:\/\//i, "https://")}
