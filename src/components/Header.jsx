@@ -69,7 +69,7 @@ function Header() {
 
   console.log("userdetails", user);
   return (
-    <header className="h-20 shadow-md bg-white fixed w-full z-50">
+    <header className="h-[4rem] shadow-md bg-white fixed w-full z-50">
       <div className="h-full container mx-auto flex items-center px-4 lg:px-14 justify-between">
         <div className="flex items-center space-x-2">
           <Link to="/" className="flex items-center space-x-2">
