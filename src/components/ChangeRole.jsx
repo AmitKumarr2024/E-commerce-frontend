@@ -38,7 +38,7 @@ function ChangeRole({ name, email, userId, role, onClose, callFun }) {
       <div className="fixed inset-0 flex justify-center items-center bg-cyan-100 bg-opacity-50 z-10">
         <div className="bg-white shadow-lg p-6 rounded-md max-w-md w-full">
           <button
-            className="absolute top-3 right-3 p-2 text-2xl text-red-700 hover:bg-red-100 rounded-full"
+            className="absolute top-3 right-3 p-2 text-2xl text-red-700 hover:bg-red-100 rounded-full z-50"
             onClick={onClose}
           >
             <FaWindowClose />

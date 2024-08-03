@@ -59,8 +59,8 @@ function AllUser(props) {
     {/* Total Users Header */}
     <thead className="bg-gray-100">
       <tr className="border-b border-gray-200">
-        <th className="p-1 text-left text-gray-700 font-semibold" colSpan="1">
-          Total Users
+        <th className="p-1 text-center text-gray-700 font-semibold" colSpan="1">
+          Total Users :
         </th>
         <th className="p-1 text-red-800 font-bold text-lg" colSpan="1">
           {allUser.length}
