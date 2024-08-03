@@ -99,8 +99,8 @@ function AllOrders(props) {
             <div className="relative border rounded-lg shadow-lg overflow-hidden bg-white">
               <div className="lg:flex">
                 <div className="grid gap-4 p-4 lg:w-2/3">
-            <p className="absolute top-2 left-3 font-medium text-xs text-gray-600">
-              Created At: <span className="text-xs text-gray-700">{moment(item.createdAt).format("LLLL")}</span>
+            <p className="absolute top-2 left-3 font-medium text-xs text-gray-400">
+              Created At: <span className="text-xs text-gray-500">{moment(item.createdAt).format("LLLL")}</span>
             </p>
                   {item.productDetails.map((product) => (
                     <div
@@ -110,7 +110,7 @@ function AllOrders(props) {
                       <img
                         src={product?.image.replace(/^http:\/\//i, "https://")}
                         alt={product.name}
-                        className="w-24 h-32 bg-slate-200 object-scale-down mix-blend-multiply p-2 rounded-md"
+                        className="w-24 h-32 bg-slate-300 object-scale-down mix-blend-multiply p-2 rounded-md"
                       />
                       <div className="flex flex-col justify-between">
                         <div className="font-medium text-lg text-gray-800 line-clamp-3">
@@ -128,7 +128,7 @@ function AllOrders(props) {
                     </div>
                   ))}
                 </div>
-                <div className="p-4 lg:w-1/3 bg-gray-50 space-y-4 relative">
+                <div className="p-4 lg:w-1/3 bg-gray-200 space-y-4 relative">
                   {/* Delete button */}
                   <div
                     className="absolute right-2 top-2 p-2 text-2xl text-red-600 rounded-full hover:bg-red-500 hover:text-white cursor-pointer"
