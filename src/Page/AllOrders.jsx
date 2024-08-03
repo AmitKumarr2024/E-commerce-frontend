@@ -87,8 +87,8 @@ function AllOrders(props) {
       )}
       <div className="space-y-6 border p-9 rounded-lg shadow-lg overflow-hidden bg-gray-100">
         {user && (
-          <div className="text-center border-2  rounded-md   py-1 flex flex-col md:flex-row items-center justify-evenly shadow-lg animated-border">
-          <h2 className="w-auto transition-all text-xl font-semibold animate-backgroundAnimation text-white px-10 rounded-2xl shadow-md mb-4 md:mb-0 mx-auto">
+          <div className="text-center border-2  rounded-md  mb-4 py-1 flex flex-col md:flex-row items-center justify-evenly shadow-lg animated-border">
+          <h2 className="w-auto transition-all text-xl font-semibold animate-backgroundAnimation text-white px-4 rounded-2xl shadow-md mb-4 md:mb-0 mx-auto">
             User Details
           </h2>
           <div className="mt-4 md:mt-0 flex flex-col md:flex-row justify-evenly w-full items-center space-y-2 md:space-y-0 md:space-x-4">
@@ -113,7 +113,7 @@ function AllOrders(props) {
             key={item._id}
             className="space-y-4 bg-white p-6 rounded-lg shadow-md"
           >
-            <div className="relative border rounded-lg bg-gray-50 p-1">
+            <div className="relative border rounded-lg bg-gray-50 p-4">
               <p className="absolute top-2 left-3 font-medium text-xs text-gray-400">
                 Created At:{" "}
                 <span className="text-xs text-gray-600">
@@ -125,7 +125,7 @@ function AllOrders(props) {
                   {item.productDetails.map((product) => (
                     <div
                       key={product.productId}
-                      className="flex gap-4 p-4 bg-white border rounded-md shadow-sm"
+                      className="flex gap-4 px-4 bg-white border rounded-md shadow-sm"
                     >
                       <img
                         src={product?.image.replace(/^http:\/\//i, "https://")}
