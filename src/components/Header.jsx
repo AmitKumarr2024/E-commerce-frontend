@@ -71,16 +71,19 @@ function Header() {
   return (
     <header className="h-16 shadow-md bg-white fixed w-full z-50">
       <div className="h-full container mx-auto flex items-center px-4 lg:px-14 justify-between">
-        <div className="w-20 relative flex flex-col justify-center items-center">
-          <Link to="/">
+        <div className="w-24 relative flex flex-col items-center space-y-2">
+          <Link to="/" className="flex flex-col items-center">
             <img
               src={image1}
-              className="w-14 lg:w-14  rounded-xl mix-blend-multiply animate-pulse transition-all"
+              className="w-16 lg:w-20 rounded-xl mix-blend-multiply animate-pulse transition-all"
               alt="logo"
             />
-            <p className=" absolute bottom-0  text-xs font-extralight italic">E-commerceMarketPlace</p>
+            <p className="text-xs font-light italic text-gray-600 mt-1">
+              E-commerce MarketPlace
+            </p>
           </Link>
         </div>
+
         <div className="hidden lg:flex pl-3 items-center w-full max-w-sm justify-evenly border rounded-full focus-within:shadow">
           <input
             type="text"
