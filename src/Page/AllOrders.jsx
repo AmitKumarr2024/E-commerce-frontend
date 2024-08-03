@@ -101,7 +101,7 @@ function AllOrders() {
               className="space-y-4 bg-white p-6 rounded-lg shadow-md"
             >
               {/* Render user details */}
-              {user && (
+              {usersMap && (
                 <div className="text-center border-2 rounded-md mb-4 py-1 flex flex-col md:flex-row items-center justify-evenly shadow-lg animated-border">
                   <h2 className="w-auto transition-all text-xl font-semibold animate-backgroundAnimation text-white px-4 rounded-2xl shadow-md mb-4 md:mb-0 mx-auto">
                     User Details
