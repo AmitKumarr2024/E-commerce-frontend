@@ -105,9 +105,9 @@ function AllOrders() {
           </div>
   
           <div className="relative border rounded-lg bg-gray-50 p-4">
-            <p className="absolute top-1 mb-4 left-3 font-medium text-xs text-gray-400">
+            <p className="absolute top-1 mb-4 left-3 font-medium text-sm text-gray-400">
               Created At:{" "}
-              <span className="text-xs text-gray-600">
+              <span className="text-base font-semibold text-blue-700">
                 {moment(item.createdAt).format("LLLL")}
               </span>
             </p>
