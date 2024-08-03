@@ -82,125 +82,122 @@ function AllOrders(props) {
 
   return (
     <div className="container mx-auto p-4">
-      {data.length === 0 && (
-        <p className="text-center text-gray-500">No orders available</p>
-      )}
-      <div className="space-y-6 border p-9  rounded-lg shadow-lg overflow-hidden">
-        {user && (
-          <div className="text-center border border-blue-800  rounded-full text-gray-600 mb-4 flex flex-col md:flex-row items-center justify-around overflow-hidden">
-            <h2 className="text-2xl font-bold bg-amber-600 text-white  py-6 px-16 ">User Details</h2>
-            <p>Name: {user.name}</p>
-            <p>Role: {user.role}</p>
-            <p>Email: {user.email}</p>
+    {data.length === 0 && (
+      <p className="text-center text-gray-500">No orders available</p>
+    )}
+    <div className="space-y-6 border p-9 rounded-lg shadow-lg overflow-hidden bg-gray-100">
+      {user && (
+        <div className="text-center border border-blue-800 rounded-lg bg-blue-50 text-gray-700 mb-4 flex flex-col md:flex-row items-center justify-around p-4">
+          <h2 className="text-2xl font-bold bg-amber-600 text-white py-4 px-8 rounded-full shadow-md">User Details</h2>
+          <div className="mt-4 md:mt-0">
+            <p className="text-lg font-semibold">Name: <span className="text-gray-800">{user.name}</span></p>
+            <p className="text-lg font-semibold">Role: <span className="text-gray-800">{user.role}</span></p>
+            <p className="text-lg font-semibold">Email: <span className="text-gray-800">{user.email}</span></p>
           </div>
-        )}
-        {data.map((item) => (
-          <div key={item._id} className="space-y-1">
-            <div className="relative border rounded-lg shadow-lg overflow-hidden bg-white">
-              <div className="lg:flex">
-                <div className="grid gap-4 p-4 lg:w-2/3">
+        </div>
+      )}
+      {data.map((item) => (
+        <div key={item._id} className="space-y-4 bg-white p-6 rounded-lg shadow-md">
+          <div className="relative border rounded-lg bg-gray-50 p-4">
             <p className="absolute top-2 left-3 font-medium text-xs text-gray-400">
-              Created At: <span className="text-xs text-gray-500">{moment(item.createdAt).format("LLLL")}</span>
+              Created At: <span className="text-xs text-gray-600">{moment(item.createdAt).format("LLLL")}</span>
             </p>
-                  {item.productDetails.map((product) => (
-                    <div
-                      key={product.productId}
-                      className="flex gap-4  p-4 rounded-md"
-                    >
-                      <img
-                        src={product?.image.replace(/^http:\/\//i, "https://")}
-                        alt={product.name}
-                        className="w-24 h-32 bg-slate-300 object-scale-down mix-blend-multiply p-2 rounded-md"
-                      />
-                      <div className="flex flex-col justify-between">
-                        <div className="font-medium text-lg text-gray-800 line-clamp-3">
-                          {product.name}
+            <div className="lg:flex">
+              <div className="grid gap-4 p-4 lg:w-2/3">
+                {item.productDetails.map((product) => (
+                  <div key={product.productId} className="flex gap-4 p-4 bg-white border rounded-md shadow-sm">
+                    <img
+                      src={product?.image.replace(/^http:\/\//i, "https://")}
+                      alt={product.name}
+                      className="w-24 h-32 bg-slate-200 object-cover p-2 rounded-md"
+                    />
+                    <div className="flex flex-col justify-between">
+                      <div className="font-medium text-lg text-gray-800 line-clamp-3">
+                        {product.name}
+                      </div>
+                      <div className="flex items-center gap-5 mt-2">
+                        <div className="text-lg text-green-600 font-semibold">
+                          {displayINRCurrency(product.price)}
                         </div>
-                        <div className="flex items-center gap-5">
-                          <div className="text-lg text-green-600 font-semibold">
-                            {displayINRCurrency(product.price)}
-                          </div>
-                          <div className="text-gray-600">
-                            Quantity: {product.quantity}
-                          </div>
+                        <div className="text-gray-600">
+                          Quantity: {product.quantity}
                         </div>
                       </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="p-4 lg:w-1/3 bg-green-50 space-y-4 relative rounded-lg shadow-sm">
+                {/* Delete button */}
+                <div
+                  className="absolute right-2 top-2 p-2 text-2xl text-red-600 rounded-full hover:bg-red-500 hover:text-white cursor-pointer transition-colors duration-300"
+                  onClick={() =>
+                    handleDeleteClick(item.productDetails[0].productId)
+                  }
+                >
+                  <MdDelete />
+                </div>
+                <div>
+                  <div className="text-lg font-medium text-gray-800 mb-2">
+                    Payment Details:
+                  </div>
+                  <div className="text-gray-600">
+                    Payment Method:{" "}
+                    {item.paymentDetails.payment_method_type[0]}
+                  </div>
+                  <div className="text-gray-600">
+                    Payment Status: {item.paymentDetails.payment_status}
+                  </div>
+                </div>
+                <div>
+                  <div className="text-lg font-medium text-gray-800 mb-2">
+                    Shipping Details
+                  </div>
+                  {item.shipping_options.map((shipping) => (
+                    <div key={shipping.shipping_rate} className="text-gray-600">
+                      Shipping Amount: {shipping.shipping_amount}
                     </div>
                   ))}
                 </div>
-                <div className="p-4 lg:w-1/3 bg-green-100 space-y-4 relative">
-                  {/* Delete button */}
-                  <div
-                    className="absolute right-2 top-2 p-2 text-2xl text-red-600 rounded-full hover:bg-red-500 hover:text-white cursor-pointer"
-                    onClick={() =>
-                      handleDeleteClick(item.productDetails[0].productId)
-                    }
-                  >
-                    <MdDelete />
-                  </div>
-                  <div>
-                    <div className="text-lg font-medium text-gray-800">
-                      Payment Details:
-                    </div>
-                    <div className="ml-1 text-gray-600">
-                      Payment Method:{" "}
-                      {item.paymentDetails.payment_method_type[0]}
-                    </div>
-                    <div className="ml-1 text-gray-600">
-                      Payment Status: {item.paymentDetails.payment_status}
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-lg font-medium text-gray-800">
-                      Shipping Details
-                    </div>
-                    {item.shipping_options.map((shipping) => (
-                      <div
-                        key={shipping.shipping_rate}
-                        className="ml-1 text-gray-600"
-                      >
-                        Shipping Amount: {shipping.shipping_amount}
-                      </div>
-                    ))}
-                  </div>
-                  <div className="text-lg font-semibold text-gray-800">
-                    Total Amount: {displayINRCurrency(item.totalAmount)}
-                  </div>
+                <div className="text-lg font-semibold text-gray-800 mt-4">
+                  Total Amount: {displayINRCurrency(item.totalAmount)}
                 </div>
               </div>
             </div>
           </div>
-        ))}
-      </div>
-
-      {showModal && (
-        <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
-          <div className="bg-white p-6 rounded-lg shadow-lg">
-            <h2 className="text-xl font-semibold mb-4">Cancel Order</h2>
-            <textarea
-              value={cancelReason}
-              onChange={(e) => setCancelReason(e.target.value)}
-              placeholder="Please provide a reason for cancellation"
-              className="w-full h-24 p-2 border border-gray-300 rounded-md mb-4"
-            />
-            <div className="flex justify-end gap-4">
-              <button
-                onClick={confirmDelete}
-                className="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600"
-              >
-                Confirm
-              </button>
-              <button
-                onClick={() => setShowModal(false)}
-                className="bg-gray-300 py-2 px-4 rounded-md hover:bg-gray-400"
-              >
-                Cancel
-              </button>
-            </div>
+        </div>
+      ))}
+    </div>
+  
+    {showModal && (
+      <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
+        <div className="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full">
+          <h2 className="text-xl font-semibold mb-4">Cancel Order</h2>
+          <textarea
+            value={cancelReason}
+            onChange={(e) => setCancelReason(e.target.value)}
+            placeholder="Please provide a reason for cancellation"
+            className="w-full h-24 p-2 border border-gray-300 rounded-md mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <div className="flex justify-end gap-4">
+            <button
+              onClick={confirmDelete}
+              className="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 transition-colors duration-300"
+            >
+              Confirm
+            </button>
+            <button
+              onClick={() => setShowModal(false)}
+              className="bg-gray-300 py-2 px-4 rounded-md hover:bg-gray-400 transition-colors duration-300"
+            >
+              Cancel
+            </button>
           </div>
         </div>
-      )}
-    </div>
+      </div>
+    )}
+  </div>
+  
   );
 }
 
