@@ -93,13 +93,13 @@ function AllOrders(props) {
           </h2>
           <div className="mt-4 md:mt-0 flex flex-col items-center md:items-start">
             <p className="text-lg font-bold mb-2">
-              Name: <span className="font-normal">{user.name}</span>
+              Name: <span className="font-light">{user.name}</span>
             </p>
             <p className="text-lg font-bold mb-2">
-              Role: <span className="font-normal">{user.role}</span>
+              Role: <span className="font-light">{user.role}</span>
             </p>
             <p className="text-lg font-bold">
-              Email: <span className="font-normal">{user.email}</span>
+              Email: <span className="font-light">{user.email}</span>
             </p>
           </div>
         </div>
