@@ -16,11 +16,12 @@ function AllOrders(props) {
         method: PaymentOrderApi.allOrder.method,
         credentials: "include",
       });
-      const dataResponse = await response.json();
+      const { orders, user } = dataResponse.data;
       
       if (response.ok) {
-        setData(dataResponse.data);
-        console.log("order-list", dataResponse.data);
+        setData(orders);
+      console.log("Order List:", orders);
+      console.log("User Details:", user);
       } else {
         console.error("Error fetching orders:", dataResponse.message);
       }
@@ -89,7 +90,7 @@ function AllOrders(props) {
               {moment(item.createdAt).format("LL")}
             </p>
 
-            <div>{data[0].productDetails[0]._id}</div>
+            <div >{data[0].productDetails[0]._id}</div>
 
 
             <div className="border rounded-lg shadow-sm overflow-hidden">
