@@ -6,7 +6,7 @@ import { MdDelete } from "react-icons/md";
 
 function AllOrders(props) {
   const [data, setData] = useState([]);
-  const [user, setUser] = useState(null); // Changed to null since it's a single object
+  const [user, setUser] = useState(null); // Updated to null, since it's a single object
   const [showModal, setShowModal] = useState(false);
   const [cancelReason, setCancelReason] = useState("");
   const [currentProductId, setCurrentProductId] = useState(null);
@@ -94,17 +94,17 @@ function AllOrders(props) {
         </div>
       )}
       <div className="space-y-6">
-        {data.map((item, index) => (
-          <div key={item._id || index} className="space-y-4">
+        {data.map((item) => (
+          <div key={item._id} className="space-y-4">
             <p className="font-medium text-lg text-gray-800">
               Created At: {moment(item.createdAt).format("LL")}
             </p>
             <div className="border rounded-lg shadow-sm overflow-hidden">
               <div className="lg:flex">
                 <div className="grid gap-4 p-4 lg:w-2/3">
-                  {item.productDetails.map((product, productIndex) => (
+                  {item.productDetails.map((product) => (
                     <div
-                      key={product.productId + productIndex}
+                      key={product.productId}
                       className="flex gap-4 bg-blue-50 p-4 rounded-md"
                     >
                       <img
@@ -154,9 +154,9 @@ function AllOrders(props) {
                     <div className="text-lg font-medium text-gray-800">
                       Shipping Details
                     </div>
-                    {item.shipping_options.map((shipping, index) => (
+                    {item.shipping_options.map((shipping) => (
                       <div
-                        key={shipping.shipping_rate + index}
+                        key={shipping.shipping_rate}
                         className="ml-1 text-gray-600"
                       >
                         Shipping Amount: {shipping.shipping_amount}
