@@ -10,11 +10,12 @@ function OrderPage(props) {
   const [showModal, setShowModal] = useState(false);
   const [cancelReason, setCancelReason] = useState('');
   const [currentProductId, setCurrentProductId] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
 
   const fetchOrderDetails = async () => {
     try {
+      setLoading(true)
       const response = await fetch(PaymentOrderApi.getOrder.url, {
         method: PaymentOrderApi.getOrder.method,
         credentials: "include",
@@ -23,6 +24,7 @@ function OrderPage(props) {
 
       setData(dataResponse.data);
       console.log("order-list", dataResponse);
+      setLoading(false)
     } catch (error) {
       console.log("order", error);
     }
