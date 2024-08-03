@@ -113,7 +113,7 @@ function AllOrders(props) {
             className="space-y-4 bg-white p-6 rounded-lg shadow-md"
           >
             <div className="relative border rounded-lg bg-gray-50 p-4">
-              <p className="absolute top-2 left-3 font-medium text-xs text-gray-400">
+              <p className="absolute top-1 mb-4 left-3 font-medium text-xs text-gray-400">
                 Created At:{" "}
                 <span className="text-xs text-gray-600">
                   {moment(item.createdAt).format("LLLL")}
@@ -129,7 +129,7 @@ function AllOrders(props) {
                       <img
                         src={product?.image.replace(/^http:\/\//i, "https://")}
                         alt={product.name}
-                        className="w-32 h-28 bg-slate-200 object-cover p-2 rounded-md"
+                        className="w-32 h-24 bg-slate-200 object-scale-down mix-blend-multiply p-2 rounded-md"
                       />
                       <div className="flex flex-col justify-between">
                         <div className="font-medium text-lg text-gray-800 line-clamp-3">
@@ -147,7 +147,7 @@ function AllOrders(props) {
                     </div>
                   ))}
                 </div>
-                <div className="p-4 lg:w-1/3 bg-green-50 space-y-4 relative rounded-lg shadow-sm">
+                <div className="p-4 lg:w-1/3 h-fit bg-green-50 space-y-4 relative rounded-lg shadow-sm">
                   {/* Delete button */}
                   <div
                     className="absolute right-2 top-2 p-2 text-2xl text-red-600 rounded-full hover:bg-red-500 hover:text-white cursor-pointer transition-colors duration-300"
