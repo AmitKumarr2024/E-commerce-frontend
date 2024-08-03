@@ -6,7 +6,7 @@ import { MdDelete } from "react-icons/md";
 
 function AllOrders() {
   const [orders, setOrders] = useState([]);
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [cancelReason, setCancelReason] = useState("");
   const [currentProductId, setCurrentProductId] = useState(null);
