@@ -89,7 +89,7 @@ function AllOrders(props) {
               {moment(item.createdAt).format("LL")}
             </p>
 
-            <div>{data[0].productDetails[0].name}</div>
+            <div>{data[0].productDetails[0]._id}</div>
 
 
             <div className="border rounded-lg shadow-sm overflow-hidden">
