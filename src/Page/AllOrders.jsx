@@ -81,7 +81,7 @@ function AllOrders() {
 
   useEffect(() => {
     fetchOrderDetails();
-  }, []);
+  }, [orders]);
 
   if (loading) {
     return <ColorfulSpinner loading={loading} />;
@@ -89,7 +89,7 @@ function AllOrders() {
 
   return (
     <div className="container mx-auto p-4 h-[calc(125vh-100px)] overflow-y-scroll hide-scrollbar">
-      <p className="text-lg font-semibold text-gray-600">Total Result : {orders.length}</p>
+      <p className="text-lg font-semibold text-gray-600">Total Order : {orders.length}</p>
       {orders.length === 0 ? (
         <p className="text-center text-gray-500">No orders available</p>
       ) : (
