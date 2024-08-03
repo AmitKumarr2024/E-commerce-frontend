@@ -87,22 +87,23 @@ function AllOrders(props) {
       )}
       <div className="space-y-6 border p-9 rounded-lg shadow-lg overflow-hidden bg-gray-100">
         {user && (
-          <div className="text-center border-8 border-blue-800 rounded-lg bg-blue-50 text-gray-700 mb-4 flex flex-col md:flex-row items-center justify-around p-4 animated-border">
-            <h2 className="text-2xl font-bold bg-amber-600 text-white py-2 px-8 rounded-full shadow-md">
-              User Details
-            </h2>
-            <div className="mt-4 md:mt-0">
-              <p className="text-lg font-semibold">
-                Name: <span className="text-gray-800">{user.name}</span>
-              </p>
-              <p className="text-lg font-semibold">
-                Role: <span className="text-gray-800">{user.role}</span>
-              </p>
-              <p className="text-lg font-semibold">
-                Email: <span className="text-gray-800">{user.email}</span>
-              </p>
-            </div>
+          <div className="text-center border-4 border-blue-600 rounded-lg text-gray-800 mb-4 flex flex-col md:flex-row items-center justify-between p-6 shadow-lg animated-border">
+          <h2 className="text-2xl font-semibold bg-amber-500 text-white py-2 px-6 rounded-full shadow-md">
+            User Details
+          </h2>
+          <div className="mt-4 md:mt-0 flex flex-col items-center md:items-start">
+            <p className="text-lg font-medium mb-2">
+              Name: <span className="font-normal">{user.name}</span>
+            </p>
+            <p className="text-lg font-medium mb-2">
+              Role: <span className="font-normal">{user.role}</span>
+            </p>
+            <p className="text-lg font-medium">
+              Email: <span className="font-normal">{user.email}</span>
+            </p>
           </div>
+        </div>
+        
         )}
 
         {data.map((item) => (
