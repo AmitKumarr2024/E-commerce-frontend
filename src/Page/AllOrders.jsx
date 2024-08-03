@@ -19,8 +19,8 @@ function AllOrders(props) {
 
       const dataResponce = await response.json();
 
-      const { orders, user } = await dataResponce;
       if (response.ok) {
+        const { orders, user } = dataResponce.data;
         setData(orders);
         console.log("Order List:", orders);
         console.log("User Details:", user);
