@@ -23,18 +23,18 @@ function AllOrders() {
       if (response.ok) {
         const { orders, users } = dataResponse.data;
   
-        // Initialize usersMap as an empty object if users is not an array
-        const userMap = {};
         if (Array.isArray(users)) {
+          const userMap = {};
           users.forEach(user => {
             userMap[user._id] = user;
           });
+          setOrders(orders);
+          setUsersMap(userMap);
         } else {
-          console.error("Users data is not an array. Initializing empty userMap.");
+          console.error("Expected users to be an array but got:", users);
+          // Handle cases where `users` is not an array or is missing
+          setUsersMap({});
         }
-  
-        setOrders(orders);
-        setUsersMap(userMap);
       } else {
         console.error("Error fetching orders:", dataResponse.message);
       }
@@ -42,6 +42,7 @@ function AllOrders() {
       console.error("Error fetching orders:", error);
     }
   };
+  
   
 
   const handleDeleteClick = (productId) => {
