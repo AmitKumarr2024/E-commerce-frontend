@@ -17,11 +17,15 @@ function AllOrders(props) {
         credentials: "include",
       });
       const dataResponse = await response.json();
-
-      setData(dataResponse.data);
-      console.log("order-list", dataResponse);
+      
+      if (response.ok) {
+        setData(dataResponse.data);
+        console.log("order-list", dataResponse.data);
+      } else {
+        console.error("Error fetching orders:", dataResponse.message);
+      }
     } catch (error) {
-      console.log("order", error);
+      console.error("Error fetching orders:", error);
     }
   };
 
@@ -49,30 +53,19 @@ function AllOrders(props) {
         }),
       });
 
-      if (!response.ok) {
-        const errorText = await response.text();
-        console.error(
-          "Failed to delete order. Status:",
-          response.status,
-          "Response:",
-          errorText
-        );
-        return;
-      }
-
       const dataResponse = await response.json();
 
-      if (dataResponse.success) {
+      if (response.ok && dataResponse.success) {
         console.log(dataResponse.message);
         fetchOrderDetails(); // Refresh order list after deletion
       } else {
-        console.log(
+        console.error(
           "Failed to delete order:",
           dataResponse.message || "Unknown error"
         );
       }
     } catch (error) {
-      console.log("Order delete error:", error);
+      console.error("Order delete error:", error);
     }
 
     setShowModal(false);
@@ -86,7 +79,7 @@ function AllOrders(props) {
 
   return (
     <div className="container mx-auto p-4">
-      {!data[0] && (
+      {data.length === 0 && (
         <p className="text-center text-gray-500">No Order available</p>
       )}
       <div className="space-y-6">
@@ -96,7 +89,6 @@ function AllOrders(props) {
               {moment(item.createdAt).format("LL")}
             </p>
 
-            <p>{item.productDetails[0]._id}</p>
 
             <div className="border rounded-lg shadow-sm overflow-hidden">
               <div className="lg:flex">
