@@ -13,7 +13,7 @@ export default {
         },
       },
       animation: {
-        backgroundAnimation: "backgroundAnimation 4s linear infinite",
+        backgroundAnimation: "backgroundAnimation 6s linear infinite",
       },
     },
     container: {
