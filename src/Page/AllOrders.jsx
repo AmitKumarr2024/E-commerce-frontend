@@ -92,7 +92,7 @@ function AllOrders() {
         <p className="text-center text-gray-500">No orders available</p>
       ) : (
         orders.map((item) => {
-          // Get user details based on the userId from the first product in the order
+          // Get user details based on the userId from the order
           const user = usersMap[item.userId];
 
           return (
@@ -101,23 +101,25 @@ function AllOrders() {
               className="space-y-4 bg-white p-6 rounded-lg shadow-md"
             >
               {/* Render user details */}
-              {usersMap && (
+              {user ? (
                 <div className="text-center border-2 rounded-md mb-4 py-1 flex flex-col md:flex-row items-center justify-evenly shadow-lg animated-border">
                   <h2 className="w-auto transition-all text-xl font-semibold animate-backgroundAnimation text-white px-4 rounded-2xl shadow-md mb-4 md:mb-0 mx-auto">
                     User Details
                   </h2>
                   <div className="mt-4 md:mt-0 flex flex-col md:flex-row justify-evenly w-full items-center space-y-2 md:space-y-0 md:space-x-4">
                     <p className="text-lg font-bold mb-2 md:mb-0">
-                      Name: <span className="font-medium">{usersMap.name}</span>
+                      Name: <span className="font-medium">{user.name}</span>
                     </p>
                     <p className="text-lg font-bold mb-2 md:mb-0">
-                      Role: <span className="font-medium">{usersMap.role}</span>
+                      Role: <span className="font-medium">{user.role}</span>
                     </p>
                     <p className="text-lg font-bold">
-                      Email: <span className="font-medium">{usersMap.email}</span>
+                      Email: <span className="font-medium">{user.email}</span>
                     </p>
                   </div>
                 </div>
+              ) : (
+                <p>User details not available</p>
               )}
 
               <div className="relative border rounded-lg bg-gray-50 p-4">
