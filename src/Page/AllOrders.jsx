@@ -6,7 +6,7 @@ import { MdDelete } from "react-icons/md";
 
 function AllOrders(props) {
   const [data, setData] = useState([]);
-  const [user, setUser] = useState([]);
+  const [user, setUser] = useState(null); // Changed to null since it's a single object
   const [showModal, setShowModal] = useState(false);
   const [cancelReason, setCancelReason] = useState("");
   const [currentProductId, setCurrentProductId] = useState(null);
@@ -18,10 +18,10 @@ function AllOrders(props) {
         credentials: "include",
       });
 
-      const dataResponce = await response.json();
+      const dataResponse = await response.json();
 
       if (response.ok) {
-        const { orders, user } = dataResponce.data;
+        const { orders, user } = dataResponse.data;
         setData(orders);
         setUser(user);
       } else {
@@ -85,22 +85,20 @@ function AllOrders(props) {
       {data.length === 0 && (
         <p className="text-center text-gray-500">No Order available</p>
       )}
+      {user && (
+        <div className="text-center text-gray-600 mb-4">
+          <h2 className="text-xl font-semibold">User Details</h2>
+          <p>Name: {user.name}</p>
+          <p>Role: {user.role}</p>
+          <p>Email: {user.email}</p>
+        </div>
+      )}
       <div className="space-y-6">
         {data.map((item, index) => (
-          <div key={item.userId + index} className="space-y-4">
+          <div key={item._id || index} className="space-y-4">
             <p className="font-medium text-lg text-gray-800">
-              {moment(item.createdAt).format("LL")}
+              Created At: {moment(item.createdAt).format("LL")}
             </p>
-            {/* add user name here */}
-            {user.map((pl, index) => {
-              return (
-                <div key={"user"+index}>
-                  <p>{pl.name}</p>
-                  <p>{pl.role}</p>
-                  <p>{pl.email}</p>
-                </div>
-              );
-            })}
             <div className="border rounded-lg shadow-sm overflow-hidden">
               <div className="lg:flex">
                 <div className="grid gap-4 p-4 lg:w-2/3">
