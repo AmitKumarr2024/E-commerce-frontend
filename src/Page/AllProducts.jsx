@@ -42,7 +42,7 @@ function AllProducts(props) {
   return (
     <>
       <div className="bg-white flex justify-between items-center py-3 px-6 text-lg font-semibold rounded-lg">
-        <h2 className="font-medium capitalize text-3xl">All products</h2>
+        <h2 className="font-medium capitalize text-3xl">All products {allProduct.length} </h2>
         <span
           onClick={() => setOpenUploadProduct(true)}
           className="border-2 px-3 py-1 rounded-full border-red-300 text-red-400 hover:bg-red-700 hover:text-white cursor-pointer"
