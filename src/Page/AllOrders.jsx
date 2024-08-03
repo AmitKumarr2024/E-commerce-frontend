@@ -85,9 +85,9 @@ function AllOrders() {
       <p className="text-center text-gray-500">No orders available</p>
     ) : (
       orders.map((item) => (
-        <div key={item._id} className="space-y-4 bg-white p-6 rounded-lg shadow-md">
+        <div key={item._id} className="space-y-4 bg-white p-6 my-6 rounded-lg shadow-md h-[calc(125vh-100px)] overflow-y-scroll ">
           <div className="text-center border-2 rounded-md mb-4 py-1 flex flex-col md:flex-col items-center justify-evenly shadow-lg animated-border">
-            <h2 className="w-auto transition-all text-xl font-semibold animate-backgroundAnimation text-white px-4 rounded-2xl shadow-md mb-4 md:mb-0 mx-auto">
+            <h2 className="w-auto transition-all text-xl  font-semibold animate-backgroundAnimation text-white px-4 rounded-2xl shadow-md mb-9 md:mb-0 mx-auto">
               User Details
             </h2>
             <div className="mt-4 md:mt-0 flex flex-col md:flex-row justify-around w-full items-center space-y-2 md:space-y-0 md:space-x-4">
