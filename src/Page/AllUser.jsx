@@ -53,64 +53,66 @@ function AllUser(props) {
 
   return (
     <>
-      <h1 className="text-3xl mb-7 font-bold uppercase text-center">
-        All Users
-      </h1>
-      <div className="bg-white pb-5 rounded-lg">
-        <table className="w-full userTable">
-        <thead>
-            <tr>
-              <th>Total user</th>
-              <th className="text-red-800">{allUser.length}</th>
-            </tr>
-          </thead>
-          <thead className="bg-orange-100">
-            <tr>
-              <th>No.</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Role</th>
-              <th>Created</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {allUser.map((user, index) => (
-              <tr key={user._id}>
-                <td>{index + 1}</td>
-                <td>{user.name}</td>
-                <td>{user.email}</td>
-                <td>{user.role}</td>
-                <td>{moment(user.createdAt).format("LLL")}</td>
-                <td>
-                  <button
-                    className="p-2 bg-green-200 hover:bg-green-500 hover:text-white hover:ease-in-out text-xl rounded-full"
-                    onClick={() => {
-                      setUpdateUserDetails(user);
-                      setOpenUpdateUser(true);
-                    }}
-                  >
-                    <FaUserEdit />
-                  </button>
-                </td>
-              </tr>
-            ))}
+      <h1 className="text-3xl mb-7 font-bold uppercase text-center">All Users</h1>
+<div className="bg-white pb-5 rounded-lg shadow-md overflow-x-auto">
+  <table className="w-full bg-white border-collapse">
+    {/* Total Users Header */}
+    <thead className="bg-gray-100">
+      <tr className="border-b border-gray-200">
+        <th className="p-4 text-left text-gray-700 font-semibold">Total Users</th>
+        <th className="p-4 text-red-800 font-bold text-lg">{allUser.length}</th>
+      </tr>
+    </thead>
 
-          </tbody>
-         
+    {/* Main Table Header */}
+    <thead className="bg-orange-100 border-b border-gray-200">
+      <tr>
+        <th className="p-4 text-left text-gray-600 font-semibold">No.</th>
+        <th className="p-4 text-left text-gray-600 font-semibold">Name</th>
+        <th className="p-4 text-left text-gray-600 font-semibold">Email</th>
+        <th className="p-4 text-left text-gray-600 font-semibold">Role</th>
+        <th className="p-4 text-left text-gray-600 font-semibold">Created</th>
+        <th className="p-4 text-left text-gray-600 font-semibold">Action</th>
+      </tr>
+    </thead>
 
-        </table>
-      </div>
-      {openUpdateUser && (
-        <ChangeRole
-          onClose={() => setOpenUpdateUser(false)}
-          name={updateUserDetails.name}
-          email={updateUserDetails.email}
-          role={updateUserDetails.role}
-          userId={updateUserDetails._id}
-          callFun={fetchAllUser}
-        />
-      )}
+    {/* Table Body */}
+    <tbody>
+      {allUser.map((user, index) => (
+        <tr key={user._id} className="border-b border-gray-200 hover:bg-gray-50">
+          <td className="p-4 text-gray-700">{index + 1}</td>
+          <td className="p-4 text-gray-700">{user.name}</td>
+          <td className="p-4 text-gray-700">{user.email}</td>
+          <td className="p-4 text-gray-700">{user.role}</td>
+          <td className="p-4 text-gray-700">{moment(user.createdAt).format("LLL")}</td>
+          <td className="p-4 text-center">
+            <button
+              className="p-2 bg-green-200 hover:bg-green-500 hover:text-white transition-colors ease-in-out text-xl rounded-full"
+              onClick={() => {
+                setUpdateUserDetails(user);
+                setOpenUpdateUser(true);
+              }}
+            >
+              <FaUserEdit />
+            </button>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+{openUpdateUser && (
+  <ChangeRole
+    onClose={() => setOpenUpdateUser(false)}
+    name={updateUserDetails.name}
+    email={updateUserDetails.email}
+    role={updateUserDetails.role}
+    userId={updateUserDetails._id}
+    callFun={fetchAllUser}
+  />
+)}
+
     </>
   );
 }
