@@ -88,7 +88,7 @@ function AllOrders(props) {
       <div className="space-y-6 border p-9 rounded-lg shadow-lg overflow-hidden bg-gray-100">
         {user && (
           <div className="text-center border-4 border-blue-600 rounded-lg text-gray-800 mb-4 py-2 flex flex-row items-center justify-evenly shadow-lg animated-border">
-          <h2 className="text-xl font-semibold animate-backgroundAnimation text-white py-1 px-20 rounded-full shadow-md">
+          <h2 className="text-xl font-semibold animate-backgroundAnimation text-white py-1 px-60 rounded-full shadow-md">
             User Details
           </h2>
           <div className="mt-4 md:mt-0 flex flex-row justify-around w-full items-center ">
