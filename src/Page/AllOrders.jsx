@@ -16,12 +16,14 @@ function AllOrders(props) {
         method: PaymentOrderApi.allOrder.method,
         credentials: "include",
       });
-      const { orders, user } = await response.json();
-      
+
+      const dataResponce = await response.json();
+
+      const { orders, user } = await dataResponce;
       if (response.ok) {
         setData(orders);
-      console.log("Order List:", orders);
-      console.log("User Details:", user);
+        console.log("Order List:", orders);
+        console.log("User Details:", user);
       } else {
         console.error("Error fetching orders:", dataResponse.message);
       }
@@ -90,8 +92,7 @@ function AllOrders(props) {
               {moment(item.createdAt).format("LL")}
             </p>
 
-            <div >{data[0].productDetails[0]._id}</div>
-
+            <div>{data[0].productDetails[0]._id}</div>
 
             <div className="border rounded-lg shadow-sm overflow-hidden">
               <div className="lg:flex">
