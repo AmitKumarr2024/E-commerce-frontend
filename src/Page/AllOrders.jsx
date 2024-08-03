@@ -88,7 +88,7 @@ function AllOrders(props) {
       <div className="space-y-6 border p-9  rounded-lg shadow-lg overflow-hidden">
         {user && (
           <div className="text-center border border-blue-800  rounded-full text-gray-600 mb-4 flex flex-col md:flex-row items-center justify-between p-2">
-            <h2 className="text-xl font-semibold">User Details</h2>
+            <h2 className="text-xl font-semibold bg-slate-200">User Details</h2>
             <p>Name: {user.name}</p>
             <p>Role: {user.role}</p>
             <p>Email: {user.email}</p>
@@ -128,7 +128,7 @@ function AllOrders(props) {
                     </div>
                   ))}
                 </div>
-                <div className="p-4 lg:w-1/3 bg-green-300 space-y-4 relative">
+                <div className="p-4 lg:w-1/3 bg-green-100 space-y-4 relative">
                   {/* Delete button */}
                   <div
                     className="absolute right-2 top-2 p-2 text-2xl text-red-600 rounded-full hover:bg-red-500 hover:text-white cursor-pointer"
