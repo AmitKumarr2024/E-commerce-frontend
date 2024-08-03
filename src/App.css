@@ -20,6 +20,30 @@
 .hide-scrollbar::-webkit-scrollbar {
   display: none;  /* Chrome, Safari, Opera */
 }
+
+@keyframes borderAnimation {
+  0% {
+    border-color: #ff8a00; /* Orange */
+  }
+  25% {
+    border-color: #ff0081; /* Pink */
+  }
+  50% {
+    border-color: #00bcd4; /* Cyan */
+  }
+  75% {
+    border-color: #4caf50; /* Green */
+  }
+  100% {
+    border-color: #ff8a00; /* Orange */
+  }
+}
+
+.animated-border {
+  border: 2px solid;
+  animation: borderAnimation 4s linear infinite;
+}
+
 /* 
 .image-container {
   width: 100%;
