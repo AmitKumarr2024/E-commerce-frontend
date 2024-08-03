@@ -97,11 +97,11 @@ function AllOrders(props) {
         {data.map((item) => (
           <div key={item._id} className="space-y-1">
             <div className="relative border rounded-lg shadow-lg overflow-hidden bg-slate-200">
+              <div className="lg:flex">
+                <div className="grid gap-4 p-4 lg:w-2/3">
             <p className="absolute top-2 left-3 font-medium text-xs text-gray-600">
               Created At: <span className="text-xs text-gray-700">{moment(item.createdAt).format("LLLL")}</span>
             </p>
-              <div className="lg:flex">
-                <div className="grid gap-4 p-4 lg:w-2/3">
                   {item.productDetails.map((product) => (
                     <div
                       key={product.productId}
