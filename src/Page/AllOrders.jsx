@@ -85,6 +85,7 @@ function AllOrders(props) {
       {data.length === 0 && (
         <p className="text-center text-gray-500">No orders available</p>
       )}
+      <div className="space-y-6">
       {user && (
         <div className="text-center text-gray-600 mb-4 flex flex-col md:flex-row items-center justify-between">
           <h2 className="text-xl font-semibold">User Details</h2>
@@ -93,11 +94,10 @@ function AllOrders(props) {
           <p>Email: {user.email}</p>
         </div>
       )}
-      <div className="space-y-6">
         {data.map((item) => (
           <div key={item._id} className="space-y-4">
             <p className="font-medium text-lg text-gray-800">
-              Created At: {moment(item.createdAt).format("LL")}
+              Created At: {moment(item.createdAt).format("LLL")}
             </p>
             <div className="border rounded-lg shadow-sm overflow-hidden">
               <div className="lg:flex">
