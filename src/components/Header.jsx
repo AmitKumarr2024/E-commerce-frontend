@@ -75,7 +75,7 @@ function Header() {
           <Link to="/">
             <img
               src={image1}
-              className="w-14 lg:w-24 lg:h-14 rounded-2xl mix-blend-multiply animate-pulse transition-all"
+              className="w-14 lg:w-14  rounded-2xl mix-blend-multiply animate-pulse transition-all"
               alt="logo"
             />
             <p className="text-xs font-extralight italic">E-commerceMarketPlace</p>
