@@ -121,7 +121,7 @@ function AllOrders(props) {
                 </span>
               </p>
               <div className="lg:flex">
-                <div className="grid gap-4 px-8 lg:w-2/3">
+                <div className="grid gap-4 p-4 lg:w-2/3">
                   {item.productDetails.map((product) => (
                     <div
                       key={product.productId}
