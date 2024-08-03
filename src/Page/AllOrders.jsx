@@ -108,13 +108,13 @@ function AllOrders() {
                   </h2>
                   <div className="mt-4 md:mt-0 flex flex-col md:flex-row justify-evenly w-full items-center space-y-2 md:space-y-0 md:space-x-4">
                     <p className="text-lg font-bold mb-2 md:mb-0">
-                      Name: <span className="font-medium">{user.name}</span>
+                      Name: <span className="font-medium">{usersMap.name}</span>
                     </p>
                     <p className="text-lg font-bold mb-2 md:mb-0">
-                      Role: <span className="font-medium">{user.role}</span>
+                      Role: <span className="font-medium">{usersMap.role}</span>
                     </p>
                     <p className="text-lg font-bold">
-                      Email: <span className="font-medium">{user.email}</span>
+                      Email: <span className="font-medium">{usersMap.email}</span>
                     </p>
                   </div>
                 </div>
