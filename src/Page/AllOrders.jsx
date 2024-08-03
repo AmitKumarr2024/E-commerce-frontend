@@ -86,7 +86,7 @@ function AllOrders(props) {
         <p className="text-center text-gray-500">No orders available</p>
       )}
       {user && (
-        <div className="text-center text-gray-600 mb-4">
+        <div className="text-center text-gray-600 mb-4 flex flex-col md:flex-row items-center justify-between">
           <h2 className="text-xl font-semibold">User Details</h2>
           <p>Name: {user.name}</p>
           <p>Role: {user.role}</p>
