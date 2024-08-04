@@ -108,7 +108,7 @@ function OrderPage(props) {
 
   useEffect(() => {
     fetchOrderDetails();
-  }, []);
+  }, [sendOrderConfirmationEmail]);
 
   if (loading) {
     return <ColorfulSpinner loading={loading} />;
