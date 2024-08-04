@@ -8,7 +8,7 @@ function useNetworkStatus() {
     const handleOnline = () => {
       setIsOnline(true);
       setIsConnectionRestored(true);
-      setTimeout(() => setIsConnectionRestored(false), 1000); // Reset after 1 seconds
+      setTimeout(() => setIsConnectionRestored(false), 2000); // Reset after 1 seconds
     };
 
     const handleOffline = () => setIsOnline(false);
