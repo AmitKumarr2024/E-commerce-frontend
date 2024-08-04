@@ -1,7 +1,5 @@
 # Ecommerce Markets web-app
 
-#  Rest Api for E-commerce web app
-
 ## Description
 
 My Awesome Project is a React application designed to make managing tasks easier and more efficient. With features like an Admin panel and payment gateway, it helps users to experience simple use.
