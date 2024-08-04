@@ -40,12 +40,12 @@ function OrderPage(props) {
       });
       const dataResponse = await response.json();
       if (dataResponse.success) {
-        console.log("Email sent successfully");
+        console.log(dataResponse.message);
       } else {
-        console.log("Failed to send email:", dataResponse.message);
+        console.error('Failed to send email:', dataResponse.message);
       }
     } catch (error) {
-      console.log("Email send error:", error);
+      console.error('Error sending email:', error);
     }
   };
 
