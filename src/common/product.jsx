@@ -2,35 +2,35 @@ const productDomain = import.meta.env.VITE_REACT_APP_BACKEND_DOMAIN;
 
 const ProductApi = {
   createProduct: {
-    url: `${productDomain}/api/products/create`,
+    url: `${productDomain}api/products/create`,
     method: "post",
   },
   allProduct: {
-    url: `${productDomain}/api/products/all-product`,
+    url: `${productDomain}api/products/all-product`,
     method: "get",
   },
   updateProduct: {
-    url: `${productDomain}/api/products/update-product`,
+    url: `${productDomain}api/products/update-product`,
     method: "post",
   },
   categoryProduct: {
-    url: `${productDomain}/api/products/get-category`,
+    url: `${productDomain}api/products/get-category`,
     method: "get",
   },
   SelectCategoryProduct: {
-    url: `${productDomain}/api/products/select-category`,
+    url: `${productDomain}api/products/select-category`,
     method: "post",
   },
   ProductDetails: {
-    url: `${productDomain}/api/products/product`,
+    url: `${productDomain}api/products/product`,
     method: "post",
   },
   SearchProduct: {
-    url: `${productDomain}/api/products/search`,
+    url: `${productDomain}api/products/search`,
     method: "get",
   },
   FilterProduct: {
-    url: `${productDomain}/api/products/category`,
+    url: `${productDomain}api/products/category`,
     method: "post",
   },
 };
