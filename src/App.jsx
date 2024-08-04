@@ -1,9 +1,8 @@
-import React, { useEffect, useCallback, useState } from "react";
-import "./App.css";
+import React, { useCallback, useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import { toast, ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import SummaryApi from "./common";
 import Context from "./context";
@@ -18,7 +17,6 @@ function App(props) {
   const [cartProductCount, setCartProductCount] = useState(0);
   const { isOnline, isConnectionRestored } = useNetworkStatus();  
 
- 
   const fetchUserDetails = useCallback(async () => {
     try {
       const dataResponse = await fetch(SummaryApi.current_user.url, {
