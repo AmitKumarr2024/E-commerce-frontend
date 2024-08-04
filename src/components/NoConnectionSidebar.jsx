@@ -1,4 +1,5 @@
 import React from "react";
+import { FaWindowClose } from "react-icons/fa";
 
 function NoConnectionSidebar({ isOnline }) {
   return (
