@@ -1,42 +1,37 @@
-// components/NetworkAlert.js
-import React, { useEffect, useState } from "react";
-import { FaWindowClose } from "react-icons/fa";
+import React, { useEffect, useState } from 'react';
+import { FaWindowClose } from 'react-icons/fa';
 
 function NetworkAlert({ isOnline, isConnectionRestored }) {
-  const [showAlert, setShowAlert] = useState(false);
-  const [alertMessage, setAlertMessage] = useState("");
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    if (!isOnline) {
-      setAlertMessage("No Internet Connection");
-      setShowAlert(true);
-    } else if (isConnectionRestored) {
-      setAlertMessage("Internet Connection Restored");
-      setShowAlert(true);
-
-      // Hide the alert after 2 seconds
-      const timer = setTimeout(() => {
-        setShowAlert(false);
-      }, 2000);
-
-      return () => clearTimeout(timer);
+    if (!isOnline || isConnectionRestored) {
+      setIsVisible(true);
+      setTimeout(() => {
+        setIsVisible(false);
+      }, 4000);
     }
   }, [isOnline, isConnectionRestored]);
 
-  if (!showAlert) return null;
+  const backgroundColor = isOnline ? 'bg-green-600' : 'bg-red-600';
+  const message = isOnline ? 'Connection is Active' : 'No Internet Connection';
 
   return (
     <div
-      className={`fixed inset-0 bg-${isOnline ? 'green' : 'red'}-600 text-white p-4 flex justify-center items-center z-50`}
+      className={`fixed top-14 left-0 right-0 p-2 mt-2 z-10 transform transition-transform ${
+        isVisible ? 'translate-y-0' : '-translate-y-full'
+      } ${backgroundColor} text-white text-center`}
+      style={{ transitionDuration: '300ms' }}
     >
-      <div className="relative max-w-lg w-full">
+      <div className="relative w-full mx-auto">
         <button
-          className="absolute top-2 right-2 p-2 text-2xl text-white hover:bg-opacity-80 rounded-full"
-          onClick={() => setShowAlert(false)}
+          className="absolute top-2 right-2 p-2 text-2xl text-white hover:bg-opacity-50 rounded-full"
+          onClick={() => setIsVisible(false)}
         >
           <FaWindowClose />
         </button>
-        <p className="text-center text-lg">{alertMessage}</p>
+        <h1 className="text-lg  font-semibold">{message}</h1>
+        <p className='text-base'>{isOnline ? 'You are online.' : 'Please check your network and try again.'}</p>
       </div>
     </div>
   );
