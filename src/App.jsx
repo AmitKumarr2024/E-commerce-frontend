@@ -79,8 +79,8 @@ function App(props) {
         value={{ fetchUserDetails, cartProductCount, fetchUserAddToCart }}
       >
         <Header />
-        <NetworkAlert isOnline={isOnline} isConnectionRestored={isConnectionRestored} />
         <main className="min-h-[calc(100vh-100px)] pt-20">
+        <NetworkAlert isOnline={isOnline} isConnectionRestored={isConnectionRestored} />
           <Outlet />
         </main>
         <Footer />
