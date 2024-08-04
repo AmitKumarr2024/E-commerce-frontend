@@ -70,7 +70,7 @@ function App(props) {
   useEffect(() => {
     fetchUserDetails();
     fetchUserAddToCart();
-  }, [fetchUserDetails]);
+  }, [fetchUserDetails,isOnline]);
 
   return (
     <>
