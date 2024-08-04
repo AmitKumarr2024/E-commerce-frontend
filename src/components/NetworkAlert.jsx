@@ -18,7 +18,7 @@ function NetworkAlert({ isOnline, isConnectionRestored }) {
 
   return (
     <div
-      className={`fixed top-14 left-0 right-0 p-4 z-50 transform transition-transform ${
+      className={`fixed top-14 left-0 right-0 p-2 z-10 transform transition-transform ${
         isVisible ? 'translate-y-0' : '-translate-y-full'
       } ${backgroundColor} text-white text-center`}
       style={{ transitionDuration: '300ms' }}
