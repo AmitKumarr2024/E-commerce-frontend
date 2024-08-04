@@ -8,10 +8,9 @@ import ColorfulSpinner from "../components/ColorfulSpinner";
 function OrderPage(props) {
   const [data, setData] = useState([]);
   const [showModal, setShowModal] = useState(false);
-  const [cancelReason, setCancelReason] = useState('');
+  const [cancelReason, setCancelReason] = useState("");
   const [currentProductId, setCurrentProductId] = useState(null);
   const [loading, setLoading] = useState(true);
-
 
   const fetchOrderDetails = async () => {
     try {
@@ -23,9 +22,30 @@ function OrderPage(props) {
 
       setData(dataResponse.data);
       console.log("order-list", dataResponse);
-      setLoading(false)
+      setLoading(false);
     } catch (error) {
       console.log("order", error);
+    }
+  };
+
+  const sendOrderConfirmationEmail = async () => {
+    try {
+      const response = await fetch(PaymentOrderApi.emailConfirmOrder.url, {
+        // Update the API endpoint as needed
+        method: PaymentOrderApi.emailConfirmOrder.method,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ userId: props.userId }), // Pass userId as needed
+      });
+      const dataResponse = await response.json();
+      if (dataResponse.success) {
+        console.log("Email sent successfully");
+      } else {
+        console.log("Failed to send email:", dataResponse.message);
+      }
+    } catch (error) {
+      console.log("Email send error:", error);
     }
   };
 
@@ -36,7 +56,7 @@ function OrderPage(props) {
 
   const confirmDelete = async () => {
     if (!cancelReason) {
-      alert('Please provide a reason for cancellation');
+      alert("Please provide a reason for cancellation");
       return;
     }
 
@@ -69,6 +89,7 @@ function OrderPage(props) {
       if (dataResponse.success) {
         console.log(dataResponse.message);
         fetchOrderDetails(); // Refresh order list after deletion
+        sendOrderConfirmationEmail(); // Send confirmation email
       } else {
         console.log(
           "Failed to delete order:",
@@ -80,7 +101,7 @@ function OrderPage(props) {
     }
 
     setShowModal(false);
-    setCancelReason('');
+    setCancelReason("");
     setCurrentProductId(null);
   };
 
@@ -137,7 +158,9 @@ function OrderPage(props) {
                   {/* Delete button */}
                   <div
                     className="absolute right-2 top-2 p-2 text-2xl text-red-600 rounded-full hover:bg-red-500 hover:text-white cursor-pointer"
-                    onClick={() => handleDeleteClick(item.productDetails[0].productId)}
+                    onClick={() =>
+                      handleDeleteClick(item.productDetails[0].productId)
+                    }
                   >
                     <MdDelete />
                   </div>
