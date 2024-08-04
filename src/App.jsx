@@ -10,10 +10,12 @@ import Context from "./context";
 import { useDispatch } from "react-redux";
 import { setUserDetails } from "./store/userSlice";
 import CartApi from "./common/cart";
+import useNetworkStatus from "./helper/useNetworkStatus";
 
 function App(props) {
   const dispatch = useDispatch();
   const [cartProductCount, setCartProductCount] = useState(0);
+  const isOnline = useNetworkStatus();
 
   const fetchUserDetails = useCallback(async () => {
     try {
@@ -76,6 +78,7 @@ function App(props) {
         value={{ fetchUserDetails, cartProductCount, fetchUserAddToCart }}
       >
         <Header />
+        <NoConnectionSidebar isOnline={isOnline} />
         <main className="min-h-[calc(100vh-100px)] pt-20">
           <Outlet />
         </main>
