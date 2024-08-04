@@ -107,7 +107,9 @@ function Header() {
               </div>
             </Link>
           )}
-          <div className="relative flex justify-center">
+
+          {user?._id&&(
+            <div className="relative flex justify-center">
             <div
               className="text-2xl lg:text-4xl cursor-pointer relative flex justify-center"
               onClick={() => setProfileMenu((prev) => !prev)}
@@ -152,6 +154,8 @@ function Header() {
               </div>
             )}
           </div>
+          )}
+          
           <div>
             {user?._id ? (
               <Link
