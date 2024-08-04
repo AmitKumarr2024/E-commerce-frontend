@@ -23,7 +23,6 @@ function Header() {
   const urlSearch = new URLSearchParams(searchLocation?.search);
   const searchQuery = urlSearch.get("q") || "";
   const [search, setSearch] = useState(searchQuery);
-  const { isOnline, isConnectionRestored } = useNetworkStatus();  
 
   useEffect(() => {
     setSearch(searchQuery);
@@ -181,7 +180,7 @@ function Header() {
           </div>
         </div>
       </header>
-      <NetworkAlert isOnline={isOnline} isConnectionRestored={isConnectionRestored} />
+      
     </>
   );
 }
