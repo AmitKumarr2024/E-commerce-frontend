@@ -30,7 +30,7 @@ function NetworkAlert({ isOnline, isConnectionRestored }) {
         >
           <FaWindowClose />
         </button>
-        <h1 className="text-lg  font-semibold mb-1">{message}</h1>
+        <h1 className="text-lg  font-semibold">{message}</h1>
         <p className='text-base'>{isOnline ? 'You are online.' : 'Please check your network and try again.'}</p>
       </div>
     </div>
