@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaWindowClose } from "react-icons/fa";
 
 function NetworkAlert({ isOnline, isConnectionRestored }) {
