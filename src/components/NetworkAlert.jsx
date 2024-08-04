@@ -9,12 +9,12 @@ function NetworkAlert({ isOnline, isConnectionRestored }) {
       setIsVisible(true);
       setTimeout(() => {
         setIsVisible(false);
-      }, 2000);
+      }, 4000);
     }
   }, [isOnline, isConnectionRestored]);
 
   const backgroundColor = isOnline ? 'bg-green-600' : 'bg-red-600';
-  const message = isOnline ? 'Connection Restored' : 'No Internet Connection';
+  const message = isOnline ? 'Connection is Active' : 'No Internet Connection';
 
   return (
     <div
@@ -30,8 +30,8 @@ function NetworkAlert({ isOnline, isConnectionRestored }) {
         >
           <FaWindowClose />
         </button>
-        <h1 className="text-xl font-semibold mb-2">{message}</h1>
-        <p>{isOnline ? 'You are back online.' : 'Please check your network and try again.'}</p>
+        <h1 className="text-lg  font-semibold mb-1">{message}</h1>
+        <p className='text-base'>{isOnline ? 'You are online.' : 'Please check your network and try again.'}</p>
       </div>
     </div>
   );
