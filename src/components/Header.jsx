@@ -10,6 +10,8 @@ import { setUserDetails } from "../store/userSlice";
 import ROLE from "../common/role";
 import Context from "../context";
 import image1 from "../../public/favicon.jpg";
+import NetworkAlert from "./NetworkAlert";
+import useNetworkStatus from "../helper/useNetworkStatus";
 
 function Header() {
   const navigate = useNavigate();
@@ -21,6 +23,7 @@ function Header() {
   const urlSearch = new URLSearchParams(searchLocation?.search);
   const searchQuery = urlSearch.get("q") || "";
   const [search, setSearch] = useState(searchQuery);
+  const { isOnline, isConnectionRestored } = useNetworkStatus();  
 
   useEffect(() => {
     setSearch(searchQuery);
@@ -176,6 +179,7 @@ function Header() {
           </div>
         </div>
       </div>
+      <NetworkAlert isOnline={isOnline} isConnectionRestored={isConnectionRestored} />
     </header>
   );
 }
