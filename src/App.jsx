@@ -11,7 +11,7 @@ import { useDispatch } from "react-redux";
 import { setUserDetails } from "./store/userSlice";
 import CartApi from "./common/cart";
 import useNetworkStatus from "./helper/useNetworkStatus";
-import NoConnectionSidebar from "./components/NoConnectionSidebar";
+import NetworkAlert from "./components/NetworkAlert";
 
 function App(props) {
   const dispatch = useDispatch();
@@ -79,7 +79,7 @@ function App(props) {
         value={{ fetchUserDetails, cartProductCount, fetchUserAddToCart }}
       >
         <Header />
-        <NoConnectionSidebar isOnline={isOnline} isConnectionRestored={isConnectionRestored} />
+        <NetworkAlert isOnline={isOnline} isConnectionRestored={isConnectionRestored} />
         <main className="min-h-[calc(100vh-100px)] pt-20">
           <Outlet />
         </main>
