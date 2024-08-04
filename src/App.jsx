@@ -31,7 +31,7 @@ function App(props) {
       }
 
       const dataApi = await dataResponse.json();
-      console.log("User details API response:", dataApi);
+      console.log("User details API responses:", dataApi);
 
       if (dataApi.success) {
         dispatch(setUserDetails(dataApi?.data));

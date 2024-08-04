@@ -2,27 +2,27 @@ const backendDomain = import.meta.env.VITE_REACT_APP_BACKEND_DOMAIN;
 
 const SummaryApi = {
   signUp: {
-    url: `${backendDomain}/api/users/signup`,
+    url: `${backendDomain}api/users/signup`,
     method: "post",
   },
   login: {
-    url: `${backendDomain}/api/users/login`,
+    url: `${backendDomain}api/users/login`,
     method: "post",
   },
   current_user: {
-    url: `${backendDomain}/api/users/user-details`,
+    url: `${backendDomain}api/users/user-details`,
     method: "get",
   },
   logout: {
-    url: `${backendDomain}/api/users/logout`,
+    url: `${backendDomain}api/users/logout`,
     method: "get",
   },
   allUser: {
-    url: `${backendDomain}/api/users/all-user`,
+    url: `${backendDomain}api/users/all-user`,
     method: "get",
   },
   userUpdate: {
-    url: `${backendDomain}/api/users/user-update`,
+    url: `${backendDomain}api/users/user-update`,
     method: "post",
   },
 };
