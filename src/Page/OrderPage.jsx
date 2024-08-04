@@ -56,7 +56,7 @@ function OrderPage(props) {
 
   const confirmDelete = async () => {
     if (!cancelReason) {
-      alert("Please provide a reason for cancellation");
+      alert("Please provide a reason for cancellations");
       return;
     }
 
