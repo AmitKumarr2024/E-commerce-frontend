@@ -16,8 +16,7 @@ import NetworkAlert from "./components/NetworkAlert";
 function App(props) {
   const dispatch = useDispatch();
   const [cartProductCount, setCartProductCount] = useState(0);
-  const { isOnline, isConnectionRestored } = useNetworkStatus();  
-
+ 
   const fetchUserDetails = useCallback(async () => {
     try {
       const dataResponse = await fetch(SummaryApi.current_user.url, {
@@ -79,7 +78,6 @@ function App(props) {
         value={{ fetchUserDetails, cartProductCount, fetchUserAddToCart }}
       >
         <Header />
-        <NetworkAlert isOnline={isOnline} isConnectionRestored={isConnectionRestored} />
         <main className="min-h-[calc(100vh-100px)] pt-20">
           <Outlet />
         </main>

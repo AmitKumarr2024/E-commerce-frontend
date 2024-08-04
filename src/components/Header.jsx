@@ -72,115 +72,117 @@ function Header() {
 
   console.log("userdetails", user);
   return (
-    <header className="h-[4.4rem] shadow-md bg-white fixed w-full z-50">
-      <div className="h-full container mx-auto flex items-center px-4 lg:px-14 justify-between">
-        <div className="flex items-center space-x-2">
-          <Link to="/" className="flex items-center space-x-2">
-            <img
-              src={image1}
-              className="w-12 lg:w-16 rounded-xl mix-blend-multiply border-4 animated-border transition-all"
-              alt="logo"
-            />
-            <p className="text-lg font-semibold italic animated-text-outline text-gray-600">
-              E-CommerceMarkets
-            </p>
-          </Link>
-        </div>
-
-        <div className="hidden lg:flex pl-3 items-center w-full max-w-sm justify-evenly border rounded-full focus-within:shadow">
-          <input
-            type="text"
-            placeholder="Search your Product..."
-            className="w-full outline-none pl-4 bg-transparent"
-            onChange={handleSearch}
-            value={search}
-          />
-          <div className="text-lg min-w-[50px] h-8 text-[1.5rem] text-white bg-red-600 flex justify-center items-center rounded-r-full">
-            <IoIosSearch />
-          </div>
-        </div>
-        <div className="flex items-center justify-between gap-2 lg:gap-6 flex-row max-w-xs lg:max-w-sm">
-          {user?._id && (
-            <Link to="/cart" className="text-2xl lg:text-4xl relative">
-              <FaCartPlus />
-              <div className="bg-red-600 text-white p-1 w-5 h-5 lg:p-3 font-bold flex items-center justify-center rounded-full absolute -top-3 -right-3">
-                <p className="text-xs lg:text-[0.8rem] text-center font-medium">
-                  {context?.cartProductCount}
-                </p>
-              </div>
+    <>
+      <header className="h-[4.4rem] shadow-md bg-white fixed w-full z-50">
+        <div className="h-full container mx-auto flex items-center px-4 lg:px-14 justify-between">
+          <div className="flex items-center space-x-2">
+            <Link to="/" className="flex items-center space-x-2">
+              <img
+                src={image1}
+                className="w-12 lg:w-16 rounded-xl mix-blend-multiply border-4 animated-border transition-all"
+                alt="logo"
+              />
+              <p className="text-lg font-semibold italic animated-text-outline text-gray-600">
+                E-CommerceMarkets
+              </p>
             </Link>
-          )}
+          </div>
 
-          {user?._id&&(
-            <div className="relative flex justify-center">
-            <div
-              className="text-2xl lg:text-4xl cursor-pointer relative flex justify-center"
-              onClick={() => setProfileMenu((prev) => !prev)}
-            >
-              {user?.profilePic ? (
-                <img
-                  src={user.profilePic}
-                  className="w-8 h-8 lg:w-10 lg:h-10 rounded-full"
-                  alt={user.name}
-                />
+          <div className="hidden lg:flex pl-3 items-center w-full max-w-sm justify-evenly border rounded-full focus-within:shadow">
+            <input
+              type="text"
+              placeholder="Search your Product..."
+              className="w-full outline-none pl-4 bg-transparent"
+              onChange={handleSearch}
+              value={search}
+            />
+            <div className="text-lg min-w-[50px] h-8 text-[1.5rem] text-white bg-red-600 flex justify-center items-center rounded-r-full">
+              <IoIosSearch />
+            </div>
+          </div>
+          <div className="flex items-center justify-between gap-2 lg:gap-6 flex-row max-w-xs lg:max-w-sm">
+            {user?._id && (
+              <Link to="/cart" className="text-2xl lg:text-4xl relative">
+                <FaCartPlus />
+                <div className="bg-red-600 text-white p-1 w-5 h-5 lg:p-3 font-bold flex items-center justify-center rounded-full absolute -top-3 -right-3">
+                  <p className="text-xs lg:text-[0.8rem] text-center font-medium">
+                    {context?.cartProductCount}
+                  </p>
+                </div>
+              </Link>
+            )}
+
+            {user?._id && (
+              <div className="relative flex justify-center">
+                <div
+                  className="text-2xl lg:text-4xl cursor-pointer relative flex justify-center"
+                  onClick={() => setProfileMenu((prev) => !prev)}
+                >
+                  {user?.profilePic ? (
+                    <img
+                      src={user.profilePic}
+                      className="w-8 h-8 lg:w-10 lg:h-10 rounded-full"
+                      alt={user.name}
+                    />
+                  ) : (
+                    <FaRegUserCircle />
+                  )}
+                </div>
+                {profileMenu && (
+                  <div className="absolute z-50 bg-white bottom-0 top-11 h-fit p-2 shadow-lg rounded">
+                    <nav className="flex flex-col">
+                      {user.role === ROLE.ADMIN && (
+                        <Link
+                          to="/admin-pannel/all-product"
+                          className="whitespace-nowrap hover:bg-slate-200 p-1 hidden md:block"
+                          onClick={() => setProfileMenu((prev) => !prev)}
+                        >
+                          Admin Pannel
+                        </Link>
+                      )}
+                      <Link
+                        to="/setting"
+                        className="whitespace-nowrap hover:bg-slate-200 p-1"
+                        onClick={() => setProfileMenu((prev) => !prev)}
+                      >
+                        Setting
+                      </Link>
+                      <Link
+                        to="/order"
+                        className="whitespace-nowrap hover:bg-slate-200 p-1"
+                        onClick={() => setProfileMenu((prev) => !prev)}
+                      >
+                        My Order
+                      </Link>
+                    </nav>
+                  </div>
+                )}
+              </div>
+            )}
+
+            <div>
+              {user?._id ? (
+                <Link
+                  to="/"
+                  className="px-3 py-1 lg:px-5 lg:py-1 font-bold text-sm lg:text-[1.1rem] rounded-full bg-violet-900 text-white hover:bg-red-800"
+                  onClick={handleLogout}
+                >
+                  Logout
+                </Link>
               ) : (
-                <FaRegUserCircle />
+                <Link
+                  to="/login"
+                  className="px-3 py-1 lg:px-5 lg:py-1 font-bold text-sm lg:text-[1.1rem] rounded-full bg-red-500 text-white hover:bg-red-800"
+                >
+                  Login
+                </Link>
               )}
             </div>
-            {profileMenu && (
-              <div className="absolute z-50 bg-white bottom-0 top-11 h-fit p-2 shadow-lg rounded">
-                <nav className="flex flex-col">
-                  {user.role === ROLE.ADMIN && (
-                    <Link
-                      to="/admin-pannel/all-product"
-                      className="whitespace-nowrap hover:bg-slate-200 p-1 hidden md:block"
-                      onClick={() => setProfileMenu((prev) => !prev)}
-                    >
-                      Admin Pannel
-                    </Link>
-                  )}
-                  <Link
-                    to="/setting"
-                    className="whitespace-nowrap hover:bg-slate-200 p-1"
-                    onClick={() => setProfileMenu((prev) => !prev)}
-                  >
-                    Setting
-                  </Link>
-                  <Link
-                    to="/order"
-                    className="whitespace-nowrap hover:bg-slate-200 p-1"
-                    onClick={() => setProfileMenu((prev) => !prev)}
-                  >
-                    My Order
-                  </Link>
-                </nav>
-              </div>
-            )}
-          </div>
-          )}
-          
-          <div>
-            {user?._id ? (
-              <Link
-                to="/"
-                className="px-3 py-1 lg:px-5 lg:py-1 font-bold text-sm lg:text-[1.1rem] rounded-full bg-violet-900 text-white hover:bg-red-800"
-                onClick={handleLogout}
-              >
-                Logout
-              </Link>
-            ) : (
-              <Link
-                to="/login"
-                className="px-3 py-1 lg:px-5 lg:py-1 font-bold text-sm lg:text-[1.1rem] rounded-full bg-red-500 text-white hover:bg-red-800"
-              >
-                Login
-              </Link>
-            )}
           </div>
         </div>
-      </div>
+      </header>
       <NetworkAlert isOnline={isOnline} isConnectionRestored={isConnectionRestored} />
-    </header>
+    </>
   );
 }
 
