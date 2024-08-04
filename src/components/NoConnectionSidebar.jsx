@@ -4,13 +4,14 @@ import { FaWindowClose } from "react-icons/fa";
 function NoConnectionSidebar({ isOnline }) {
   return (
     <div
-      className={`fixed inset-0 flex justify-center items-center bg-red-600 text-white text-center p-2 z-50 transition-transform transform ${
+      className={`fixed inset-0 flex justify-center items-start p-4 z-50 transition-transform transform ${
         isOnline ? "-translate-y-full" : "translate-y-0"
       }`}
+      style={{ transitionDuration: "300ms" }}
     >
-      <div className="relative max-w-md w-full bg-red-700 p-4 rounded-md shadow-lg">
+      <div className="relative w-full max-w-md mx-auto bg-red-600 text-white text-center p-4 rounded-lg shadow-lg">
         <button
-          className="absolute top-2 right-2 p-2 text-2xl text-red-100 hover:bg-red-600 rounded-full"
+          className="absolute top-2 right-2 p-2 text-2xl text-white hover:bg-red-500 rounded-full"
           onClick={() => window.location.reload()}
         >
           <FaWindowClose />
