@@ -2,9 +2,15 @@ import { useEffect, useState } from "react";
 
 function useNetworkStatus() {
   const [isOnline, setIsOnline] = useState(navigator.onLine);
+  const [isConnectionRestored, setIsConnectionRestored] = useState(false);
 
   useEffect(() => {
-    const handleOnline = () => setIsOnline(true);
+    const handleOnline = () => {
+      setIsOnline(true);
+      setIsConnectionRestored(true);
+      setTimeout(() => setIsConnectionRestored(false), 3000); // Reset after 3 seconds
+    };
+
     const handleOffline = () => setIsOnline(false);
 
     window.addEventListener("online", handleOnline);
@@ -15,7 +21,7 @@ function useNetworkStatus() {
       window.removeEventListener("offline", handleOffline);
     };
   }, []);
-  return isOnline;
+  return { isOnline, isConnectionRestored };
 }
 
 export default useNetworkStatus;

@@ -16,7 +16,7 @@ import NoConnectionSidebar from "./components/NoConnectionSidebar";
 function App(props) {
   const dispatch = useDispatch();
   const [cartProductCount, setCartProductCount] = useState(0);
-  const isOnline = useNetworkStatus();
+  const { isOnline, isConnectionRestored } = useNetworkStatus();  
 
   const fetchUserDetails = useCallback(async () => {
     try {
@@ -79,7 +79,7 @@ function App(props) {
         value={{ fetchUserDetails, cartProductCount, fetchUserAddToCart }}
       >
         <Header />
-        <NoConnectionSidebar isOnline={isOnline} />
+        <NoConnectionSidebar isOnline={isOnline} isConnectionRestored={isConnectionRestored} />
         <main className="min-h-[calc(100vh-100px)] pt-20">
           <Outlet />
         </main>
