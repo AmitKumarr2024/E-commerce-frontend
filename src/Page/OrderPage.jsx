@@ -28,27 +28,7 @@ function OrderPage(props) {
     }
   };
 
-  const sendOrderConfirmationEmail = async () => {
-    try {
-      const response = await fetch(PaymentOrderApi.emailConfirmOrder.url, {
-        // Update the API endpoint as needed
-        method: PaymentOrderApi.emailConfirmOrder.method,
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ userId: props.userId }), // Pass userId as needed
-      });
-      const dataResponse = await response.json();
-      if (dataResponse.success) {
-        console.log("email:",dataResponse.message);
-        console.log("email-data:",dataResponse.data);
-      } else {
-        console.error('Failed to send email:', dataResponse.message);
-      }
-    } catch (error) {
-      console.error('Error sending email:', error);
-    }
-  };
+  
 
   const handleDeleteClick = (productId) => {
     setCurrentProductId(productId);

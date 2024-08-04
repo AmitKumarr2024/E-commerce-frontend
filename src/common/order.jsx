@@ -17,10 +17,7 @@ const PaymentOrderApi = {
     url: `${domain}api/payment/all-order`,
     method: "get",
   },
-  emailConfirmOrder: {
-    url: `${domain}api/payment/send-order-confirmation`,
-    method: "post",
-  },
+ 
 };
 
 export default PaymentOrderApi;
