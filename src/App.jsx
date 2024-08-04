@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 import { setUserDetails } from "./store/userSlice";
 import CartApi from "./common/cart";
 import useNetworkStatus from "./helper/useNetworkStatus";
+import NoConnectionSidebar from "./components/NoConnectionSidebar";
 
 function App(props) {
   const dispatch = useDispatch();
